@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+
+  @media (resolution: 144dpi) {
+    font-size: 80%;
+  }
+
+  @media (resolution: 108dpi) {
+    font-size: 80%;
+  }
+}
+
+* {
+  color: #334155;
+  font-family: 'iFood RC Textos', sans-serif !important;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+@import 'plyr-react/plyr.css';
+@import './fonts/index.scss';
+
+.plyrVideoPlayer {
+  --plyr-color-main: #3b82f6;
+  --plyr-font-smoothing: true;
+  --plyr-tooltip-padding: 50px !important;
+  --plyr-tooltip-color: white;
+  --plyr-tooltip-background: transparent;
+  --plyr-font-size-small: 14px;
+  --plyr-tooltip-shadow: 0px;
+}
