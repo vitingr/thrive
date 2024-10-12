@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority'
 export const buttonVariants = cva(
   [
     'max-w-fit',
-    'rounded-sm',
+    'rounded-full',
     'px-6',
     'py-2',
     'w-full',

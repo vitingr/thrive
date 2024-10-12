@@ -1,15 +1,17 @@
+import { Navbar } from '@/components/common/Navbar'
 import '@/styles/index.scss'
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="pt">
+      <body className="bg-slate-100">
+        <Navbar />
         {children}
       </body>
     </html>
-  );
+  )
 }

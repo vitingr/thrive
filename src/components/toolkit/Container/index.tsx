@@ -20,7 +20,7 @@ export const Container: React.FC<ContainerProps> = ({
       ...props
     },
     <div
-      className={`${container === 'fixed' ? 'mx-auto max-w-6xl' : ''} ${className}`}
+      className={`${container === 'fixed' ? 'mx-auto max-w-7xl' : ''} ${className}`}
     >
       {children}
     </div>
