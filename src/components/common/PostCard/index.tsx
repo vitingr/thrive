@@ -55,12 +55,12 @@ export const PostCard: React.FC<PostCardProps> = () => {
       <div className="flex w-full justify-between gap-8 px-4">
         <figure className="flex items-center gap-4">
           <IoHeartOutline className="cursor-pointer" fill="#64748b" size={24} />
-          <IoShareOutline className="cursor-pointer" fill="#64748b" size={24} />
           <IoChatbubbleOutline
             className="cursor-pointer"
             fill="#64748b"
             size={24}
           />
+          <IoShareOutline className="cursor-pointer" fill="#64748b" size={24} />
         </figure>
         <figure className="flex items-center">
           <IoBookmarkOutline

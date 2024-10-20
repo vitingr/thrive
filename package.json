@@ -17,6 +17,7 @@
     "@tinymce/tinymce-react": "^5.1.1",
     "@tippyjs/react": "^4.2.6",
     "@types/uuid": "^10.0.0",
+    "@vectopus/atlas-icons": "^0.0.7",
     "animate.css": "^4.1.1",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",

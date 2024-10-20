@@ -33,3 +33,10 @@ html {
   --plyr-font-size-small: 14px;
   --plyr-tooltip-shadow: 0px;
 }
+
+.white-icon * {
+  color: white;
+}
+
+// Components
+@import "./components/circle-button.scss";

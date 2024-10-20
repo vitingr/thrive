@@ -15,7 +15,7 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <main className="pt-16">
+    <main className="pt-8">
       <Feed />
       <Footer />
     </main>
