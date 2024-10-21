@@ -1,17 +1,16 @@
 import Image from 'next/image'
 import { GoHomeFill } from 'react-icons/go'
-import {
-  IoAddSharp,
-  IoApps,
-  IoMail,
-  IoNotificationsSharp
-} from 'react-icons/io5'
+import { IoApps, IoMail, IoNotificationsSharp } from 'react-icons/io5'
 
+import { getUserSession } from '@/utils/auth/getUserSession'
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
+import { CreatePost } from './CreatePost'
 import { NavbarProps } from './types'
 
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar: React.FC<NavbarProps> = async () => {
+  const { session: userData } = await getUserSession()
+
   return (
     <nav className="bg-neutral fixed w-full border-b border-slate-200 bg-neutral-50 px-4 py-3">
       <section className="mx-auto flex w-full max-w-2xl items-center justify-between lg:max-w-7xl">
@@ -31,18 +30,15 @@ export const Navbar: React.FC<NavbarProps> = () => {
           </div>
         </div>
         <div className="flex w-full items-center justify-end gap-8">
-          <div className="flex w-full max-w-[100px] cursor-pointer items-center gap-2.5 rounded-full bg-blue-500 px-4 py-2 transition-all duration-300 hover:brightness-125">
-            <IoAddSharp className="white-icon" fill="#f8fafc" size={20} />
-            <p className="text-sm font-medium text-white">Criar</p>
-          </div>
+          <CreatePost userData={userData} />
           <figure className="cursor-pointer transition-all duration-300 hover:brightness-125">
-            <GoHomeFill fill="#475569" size={24} />
+            <GoHomeFill fill="#475569" size={20} />
           </figure>
           <figure className="cursor-pointer transition-all duration-300 hover:brightness-125">
-            <IoMail fill="#475569" size={24} />
+            <IoMail fill="#475569" size={20} />
           </figure>
           <figure className="cursor-pointer transition-all duration-300 hover:brightness-125">
-            <IoNotificationsSharp fill="#475569" size={24} />
+            <IoNotificationsSharp fill="#475569" size={20} />
           </figure>
           <div className="flex items-center gap-8 border-l border-slate-300 pl-8">
             {/* <div className="flex w-full cursor-pointer items-center gap-2.5 rounded-full bg-slate-600 py-2 pl-2 pr-4 transition-all duration-300 hover:brightness-125">
@@ -65,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
               <SignInButton />
             </SignedOut>
             <figure className="cursor-pointer transition-all duration-300 hover:brightness-125">
-              <IoApps fill="#475569" size={24} />
+              <IoApps fill="#475569" size={20} />
             </figure>
           </div>
         </div>
