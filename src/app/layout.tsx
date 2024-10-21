@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/common/Navbar'
 import '@/styles/index.scss'
+import { ClerkProvider } from '@clerk/nextjs'
 
 export default function RootLayout({
   children
@@ -7,11 +8,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt">
-      <body className="bg-neutral-100">
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="pt">
+        <body className="bg-neutral-100">
+          <Navbar />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

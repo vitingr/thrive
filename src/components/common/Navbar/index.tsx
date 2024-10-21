@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { CiHashtag } from 'react-icons/ci'
 import { GoHomeFill } from 'react-icons/go'
 import {
   IoAddSharp,
@@ -7,13 +6,14 @@ import {
   IoMail,
   IoNotificationsSharp
 } from 'react-icons/io5'
-import { MdKeyboardArrowDown } from 'react-icons/md'
+
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 import { NavbarProps } from './types'
 
 export const Navbar: React.FC<NavbarProps> = () => {
   return (
-    <nav className="bg-neutral fixed w-full border-b border-slate-200 bg-neutral-50 py-3 px-4">
+    <nav className="bg-neutral fixed w-full border-b border-slate-200 bg-neutral-50 px-4 py-3">
       <section className="mx-auto flex w-full max-w-2xl items-center justify-between lg:max-w-7xl">
         <div className="flex w-full items-center justify-start gap-4">
           <figure className="max-w-12">
@@ -24,8 +24,8 @@ export const Navbar: React.FC<NavbarProps> = () => {
               autoComplete="off"
               className="w-full rounded-full border border-slate-200 bg-white px-4 py-2 text-sm outline-none duration-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               id="search"
-              placeholder='Pesquisar...'
               name="search"
+              placeholder="Pesquisar..."
               type="text"
             />
           </div>
@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
             <IoNotificationsSharp fill="#475569" size={24} />
           </figure>
           <div className="flex items-center gap-8 border-l border-slate-300 pl-8">
-            <div className="flex w-full cursor-pointer items-center gap-2.5 rounded-full bg-slate-600 py-2 pl-2 pr-4 transition-all duration-300 hover:brightness-125">
+            {/* <div className="flex w-full cursor-pointer items-center gap-2.5 rounded-full bg-slate-600 py-2 pl-2 pr-4 transition-all duration-300 hover:brightness-125">
               <figure className="max-w-6 rounded-full">
                 <Image
                   alt="Profile picture"
@@ -57,7 +57,13 @@ export const Navbar: React.FC<NavbarProps> = () => {
               </figure>
               <p className="text-sm font-medium text-white">Jeremias Jr.</p>
               <MdKeyboardArrowDown fill="#e2e8f0" size={16} />
-            </div>
+            </div> */}
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
             <figure className="cursor-pointer transition-all duration-300 hover:brightness-125">
               <IoApps fill="#475569" size={24} />
             </figure>

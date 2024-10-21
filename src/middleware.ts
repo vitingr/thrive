@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+import { clerkMiddleware } from '@clerk/nextjs/server'
+
 import {
   CLIENT_ID_COOKIE_OPTIONS,
   COOKIE,
@@ -13,6 +15,13 @@ import { getUserAgentMiddleware } from './middlewares/getUserAgent'
 import { hasUTMStoredMiddleware } from './middlewares/hasUTMStoredMiddleware'
 
 export async function middleware(request: NextRequest) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  const clerkResponse = await clerkMiddleware()(request)
+
+  if (clerkResponse instanceof NextResponse) {
+    return clerkResponse
+  }
   const response = NextResponse.next()
 
   const headers = getHeaders(request, response)
@@ -63,5 +72,10 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/((?!api|_next|_vercel|.*\\..*).*)']
+  matcher: [
+    '/',
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/(api|trpc)(.*)'
+  ]
 }
