@@ -1,13 +1,11 @@
 import axios, { AxiosInstance } from 'axios'
 
-import { SUPABASE_API_HEADERS } from '@/constants/headers'
-import { supabaseBaseUrl } from '@/environments/supabaseBaseUrl'
-
 import { Groups } from './groups'
 import { Posts } from './posts'
 import { Users } from './users'
+import { CONTENT_API_KEY } from '@/environments/contentApk'
 
-export class Supabase {
+export class Content {
   private instance: AxiosInstance
 
   public posts: Posts
@@ -16,8 +14,7 @@ export class Supabase {
 
   constructor() {
     this.instance = axios.create({
-      baseURL: supabaseBaseUrl,
-      headers: SUPABASE_API_HEADERS
+      baseURL: CONTENT_API_KEY,
     })
 
     this.posts = new Posts(this.instance)
