@@ -1,6 +1,6 @@
 import { User } from '@/types/models/user'
 import { AxiosInstance } from 'axios'
-import { GetUserByEmailProps } from './types'
+import { CreateUserData, GetUserByEmailData } from './types'
 
 export class Users {
   private instance: AxiosInstance
@@ -11,15 +11,47 @@ export class Users {
 
   getUserByEmail = async ({
     email
-  }: GetUserByEmailProps): Promise<User | undefined> => {
+  }: GetUserByEmailData): Promise<User | undefined> => {
     try {
-      return this.instance.get(`/users/get-user-by-email/${email}`)
+      const { data: userData } = await this.instance.get(
+        `/users/get-user-by-email/${email}`
+      )
+
+      console.log(`data: ${userData}`)
+
+      return userData
     } catch (getUserByEmailError) {
       console.error(getUserByEmailError)
     }
   }
 
-  createUser = async (): Promise<void> => {
-    console.log('usuario criado')
+  createUser = async ({
+    uid,
+    username,
+    firstname,
+    lastname,
+    email,
+    profile_picture,
+    background_picture,
+    followers,
+    following
+  }: CreateUserData): Promise<void> => {
+    try {
+      return this.instance.post(`/users`, {
+        body: JSON.stringify({
+          uid: uid,
+          username: username,
+          firstname: firstname,
+          lastname: lastname,
+          email: email,
+          profile_picture: profile_picture,
+          background_picture: background_picture,
+          followers: followers,
+          following: following
+        })
+      })
+    } catch (createUserError) {
+      console.error(createUserError)
+    }
   }
 }
