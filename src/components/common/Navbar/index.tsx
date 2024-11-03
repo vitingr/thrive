@@ -7,6 +7,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 import { CreatePost } from './CreatePost'
 import { NavbarProps } from './types'
+import Link from 'next/link'
 
 export const Navbar: React.FC<NavbarProps> = async () => {
   const { session: userData } = await getUserSession()
@@ -15,9 +16,9 @@ export const Navbar: React.FC<NavbarProps> = async () => {
     <nav className="bg-neutral fixed w-full border-b border-slate-200 bg-neutral-50 px-4 py-3">
       <section className="mx-auto flex w-full max-w-2xl items-center justify-between lg:max-w-7xl">
         <div className="flex w-full items-center justify-start gap-4">
-          <figure className="max-w-12">
+          <Link href="#" className="max-w-12">
             <Image alt="Logo" height={93} src="/logos/logo.png" width={93} />
-          </figure>
+          </Link>
           <div className="relative flex w-full max-w-[300px] flex-1">
             <input
               autoComplete="off"
@@ -30,7 +31,9 @@ export const Navbar: React.FC<NavbarProps> = async () => {
           </div>
         </div>
         <div className="flex w-full items-center justify-end gap-8">
-          <CreatePost userData={userData} />
+          <SignedIn>
+            <CreatePost userData={userData} />
+          </SignedIn>
           <figure className="cursor-pointer transition-all duration-300 hover:brightness-125">
             <GoHomeFill fill="#475569" size={20} />
           </figure>

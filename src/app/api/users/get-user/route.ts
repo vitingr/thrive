@@ -1,25 +1,29 @@
-import { instanceContent } from '@/instances/instanceContent'
-import { generateDefaultUsername } from '@/utils/auth/generateDefaultUsername'
-import { currentUser } from '@clerk/nextjs/server'
+import { instanceContent } from "@/instances/instanceContent"
+import { generateDefaultUsername } from "@/utils/auth/generateDefaultUsername"
 
-export const GET = async () => {
+
+export const POST = async (req: Request, res: Response) => {
   try {
-    const session = await currentUser()
+    const { session } = await req.json()
 
-    const userExists = instanceContent.users.getUserByEmail({
-      email: session?.emailAddresses[0].emailAddress ?? ''
+    if (!session) {
+      return new Response('User not authenticated', { status: 401 })
+    }
+
+    const userExists = await instanceContent.users.getUserByEmail({
+      email: session?.emailAddresses[0].emailAddress
     })
 
-    if (!userExists) {
+    if (!userExists?.email) {
       instanceContent.users.createUser({
         background_picture:
           'https://wallpapers.com/images/hd/minimalist-simple-linkedin-background-cccrhcvkvmzfxu0s.jpg',
-        email: session?.emailAddresses?.[0]?.emailAddress || '',
-        firstname: session?.firstName || '',
-        lastname: session?.lastName || '',
-        profile_picture: session?.imageUrl || '',
-        username: generateDefaultUsername(session?.firstName || ''),
-        uid: session?.id || '',
+        email: session?.emailAddresses?.[0]?.emailAddress,
+        firstname: session?.firstName,
+        lastname: session?.lastName,
+        profile_picture: session?.imageUrl,
+        username: generateDefaultUsername(session?.firstName),
+        uid: session?.id,
         followers: 0,
         following: 0
       })

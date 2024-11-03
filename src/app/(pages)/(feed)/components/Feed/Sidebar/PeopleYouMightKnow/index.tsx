@@ -10,7 +10,7 @@ export const PeopleYouMightKnow: React.FC = () => {
       </h2>
       <ul className="flex flex-col divide-y divide-slate-200">
         {PEOPLE_YOU_MIGHT_KNOW.map((user, index: number) => (
-          <li className="flex cursor-pointer items-center gap-3 py-2 pl-2 transition-all duration-300 hover:bg-slate-100">
+          <li className="flex cursor-pointer items-center gap-3 py-2 pl-2 transition-all duration-300 hover:bg-slate-100" key={`${user.name}-${index}`}>
             <figure className="w-full max-w-10 rounded-full">
               <Image
                 width={100}

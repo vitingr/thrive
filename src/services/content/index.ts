@@ -14,7 +14,10 @@ export class Content {
 
   constructor() {
     this.instance = axios.create({
-      baseURL: CONTENT_API_KEY,
+      baseURL: 'http://localhost:8080',
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
 
     this.posts = new Posts(this.instance)

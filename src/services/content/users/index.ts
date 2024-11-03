@@ -17,11 +17,9 @@ export class Users {
         `/users/get-user-by-email/${email}`
       )
 
-      console.log(`data: ${userData}`)
-
       return userData
     } catch (getUserByEmailError) {
-      console.error(getUserByEmailError)
+      console.error('Não foi possível obter o email do usuário')
     }
   }
 
@@ -38,17 +36,15 @@ export class Users {
   }: CreateUserData): Promise<void> => {
     try {
       return this.instance.post(`/users`, {
-        body: JSON.stringify({
-          uid: uid,
-          username: username,
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          profile_picture: profile_picture,
-          background_picture: background_picture,
-          followers: followers,
-          following: following
-        })
+        uid,
+        username,
+        firstname,
+        lastname,
+        email,
+        profile_picture,
+        background_picture,
+        followers,
+        following
       })
     } catch (createUserError) {
       console.error(createUserError)
