@@ -1,5 +1,5 @@
 import { PATHS } from '@/constants/paths'
-import { BASE_URL } from '@/environments/baseUrl'
+import { BASE_URL } from '@/constants/environments/baseUrl'
 
 import { routeBuilder } from './routeBuilder'
 

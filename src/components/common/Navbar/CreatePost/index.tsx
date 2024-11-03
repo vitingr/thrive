@@ -20,8 +20,12 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
         <p className="text-sm font-medium text-white">Criar</p>
       </button>
 
-      <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen}>
-        <div className="rounded-md bg-white px-4 pb-8 pt-16">testando</div>
+      <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} hideCloseButton>
+        <div className="rounded-md flex justify-between max-w-4xl w-full bg-white">
+          <figure>
+            
+          </figure>
+        </div>
       </Modal>
     </>
   )

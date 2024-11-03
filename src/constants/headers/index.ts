@@ -1,4 +1,4 @@
-import { supabaseAPK } from '@/environments/supabaseApk'
+import { supabaseAPK } from '@/constants/environments/supabaseApk'
 
 export const SUPABASE_API_HEADERS = {
   'Content-Type': 'application/json',
