@@ -6,9 +6,19 @@ import { IoAddSharp } from 'react-icons/io5'
 import { Modal } from '@/components/toolkit/Modal'
 
 import { CreatePostProps } from './types'
+import { SecondStep } from './SecondStep'
+import { FirstStep } from './FirstStep'
+import { ThirdStep } from './ThirdStep'
 
 export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [currentStep, setCurrentStep] = useState<number>(0)
+
+  const STEPS = [
+    <FirstStep setCurrentStep={setCurrentStep} key="first-step" />,
+    <SecondStep setCurrentStep={setCurrentStep} key="second-step" />,
+    <ThirdStep setCurrentStep={setCurrentStep} key="third-step" />
+  ]
 
   return (
     <>
@@ -20,12 +30,8 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
         <p className="text-sm font-medium text-white">Criar</p>
       </button>
 
-      <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} hideCloseButton>
-        <div className="rounded-md flex justify-between max-w-4xl w-full bg-white">
-          <figure>
-            
-          </figure>
-        </div>
+      <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} onlyMobileFullScreen>
+        {STEPS[currentStep]}
       </Modal>
     </>
   )

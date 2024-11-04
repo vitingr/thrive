@@ -8,7 +8,8 @@ export const buttonVariants = cva(
     'py-2',
     'w-full',
     'tracking-wide',
-    'transition',
+    'transition-all',
+    'duratin-300',
     'ease-in-out',
     'disabled:cursor-not-allowed',
     'disabled:opacity-60'
@@ -16,7 +17,7 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: ['text-slate-50', 'bg-indigo-500', 'hover:brightness-[115%]'],
+        primary: ['text-slate-50', 'bg-indigo-500', 'hover:brightness-[120%]'],
         primaryOutline: [
           'text-indigo-600',
           'border',

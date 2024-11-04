@@ -4,11 +4,7 @@ const isProtectedRoute = createRouteMatcher([
   '/feed(.*)'
 ])
 
-export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)) {
-    auth().protect()
-  }
-})
+export default clerkMiddleware()
 
 export const config = {
   matcher: [

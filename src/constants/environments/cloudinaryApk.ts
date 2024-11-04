@@ -1,1 +1,1 @@
-export const cloudinaryApk = process.env.CLOUDINARY_API_SECRET
+export const cloudinaryApk = process.env.CLOUDINARY_API_KEY
