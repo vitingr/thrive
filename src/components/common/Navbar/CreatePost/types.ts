@@ -1,4 +1,5 @@
+import { User } from '@/types/models/user'
+
 export interface CreatePostProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  userData: any
+  userData: User
 }

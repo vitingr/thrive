@@ -1,7 +1,12 @@
-import { Button } from "@/components/toolkit/Button"
-import { UploadButtonProps } from "./types"
+import { Button } from '@/components/toolkit/Button'
+import { UploadButtonProps } from './types'
 
-export const UploadButton: React.FC<UploadButtonProps> = ({setImagePath, uploadImageAction, children}) => {
+export const UploadButton: React.FC<UploadButtonProps> = ({
+  setImagePath,
+  uploadImageAction,
+  children,
+  isLoading
+}) => {
   const handleChangeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
 
@@ -26,17 +31,16 @@ export const UploadButton: React.FC<UploadButtonProps> = ({setImagePath, uploadI
     }
   }
 
-
   return (
     <>
-      <Button>
+      <Button isLoading={isLoading} variant="secondary">
         <input
           type="file"
           name="image"
           id="image"
           accept="image/*"
           onChange={e => handleChangeImage(e)}
-          className="absolute left-1/2 top-1/2 z-30 mt-8 pb-16 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer opacity-0"
+          className="absolute left-1/2 top-1/2 z-30 mt-8 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer pb-16 opacity-0"
         />
         {children}
       </Button>

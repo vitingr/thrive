@@ -10,6 +10,9 @@ export const getUserSession = async () => {
 
   const request = await fetch('http://localhost:3000/api/users/get-user', {
     method: 'POST',
+    next: {
+      revalidate: 5 * 60
+    },
     headers: {
       'Content-Type': 'application/json'
     },

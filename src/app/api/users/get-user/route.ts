@@ -10,12 +10,14 @@ export const POST = async (req: Request, res: Response) => {
       return new Response('User not authenticated', { status: 401 })
     }
 
-    const userExists = await instanceContent.users.getUserByEmail({
+    let userExists
+
+    userExists = await instanceContent.users.getUserByEmail({
       email: session?.emailAddresses[0].emailAddress
     })
 
     if (!userExists?.email) {
-      instanceContent.users.createUser({
+      userExists = instanceContent.users.createUser({
         background_picture:
           'https://wallpapers.com/images/hd/minimalist-simple-linkedin-background-cccrhcvkvmzfxu0s.jpg',
         email: session?.emailAddresses?.[0]?.emailAddress,
@@ -29,7 +31,7 @@ export const POST = async (req: Request, res: Response) => {
       })
     }
 
-    return new Response(JSON.stringify(session), { status: 200 })
+    return new Response(JSON.stringify(userExists), { status: 200 })
   } catch (error) {
     return new Response(
       `ERRO! Não foi possível encontrar os produtos correspodentes: ${error}`,

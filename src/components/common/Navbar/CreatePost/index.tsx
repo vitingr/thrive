@@ -13,10 +13,20 @@ import { ThirdStep } from './ThirdStep'
 export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [currentStep, setCurrentStep] = useState<number>(0)
+  const [imageUrl, setImageUrl] = useState<string>('')
 
   const STEPS = [
-    <FirstStep setCurrentStep={setCurrentStep} key="first-step" />,
-    <SecondStep setCurrentStep={setCurrentStep} key="second-step" />,
+    <FirstStep
+      setImageUrl={setImageUrl}
+      setCurrentStep={setCurrentStep}
+      key="first-step"
+    />,
+    <SecondStep
+      userData={userData}
+      imageUrl={imageUrl}
+      setCurrentStep={setCurrentStep}
+      key="second-step"
+    />,
     <ThirdStep setCurrentStep={setCurrentStep} key="third-step" />
   ]
 
@@ -30,7 +40,11 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
         <p className="text-sm font-medium text-white">Criar</p>
       </button>
 
-      <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen} onlyMobileFullScreen>
+      <Modal
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+        onlyMobileFullScreen
+      >
         {STEPS[currentStep]}
       </Modal>
     </>
