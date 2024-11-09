@@ -1,0 +1,22 @@
+name: "(CI): Lint and format"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - master
+
+jobs:
+  sandbox-continuos-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Linter Formatter
+        run: |
+          yarn lint --fix
+
+      - name: Authorization
+        run: |
+          echo "Your Pull Request has been formatted successfully! 🧼🧹"
+
+

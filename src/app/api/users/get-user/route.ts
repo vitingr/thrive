@@ -1,7 +1,6 @@
 import { instanceContent } from "@/instances/instanceContent"
 import { generateDefaultUsername } from "@/utils/auth/generateDefaultUsername"
 
-
 export const POST = async (req: Request, res: Response) => {
   try {
     const { session } = await req.json()

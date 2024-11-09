@@ -1,12 +1,15 @@
 'use client'
 
 import Image from 'next/image'
-import { SecondStepProps } from './types'
+import { PostContent, SecondStepProps } from './types'
 import { useEffect, useState } from 'react'
 import { EmojiIcon } from '../icons/Emoji'
 import { LocationPin } from '../icons/LocationPin'
 import { Collaborator } from '../icons/Collaborator'
 import { DropdownArrow } from '../icons/DropdownArrow'
+import { Button } from '@/components/toolkit/Button'
+import { toast } from 'react-toastify'
+import { instanceContent } from '@/instances/instanceContent'
 
 export const SecondStep: React.FC<SecondStepProps> = ({
   imageUrl,
@@ -14,6 +17,57 @@ export const SecondStep: React.FC<SecondStepProps> = ({
   userData
 }) => {
   const [contentLength, setContentLength] = useState<number>(0)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [postContent, setPostContent] = useState<PostContent>({
+    content: '',
+    creator: userData,
+    creator_id: userData.id,
+    image_url: imageUrl,
+    location: '',
+    type: 'image',
+    video_url: ''
+  })
+
+  function setPostContentValues<Key extends keyof PostContent>(
+    key: Key,
+    value: PostContent[Key]
+  ) {
+    setPostContent(prevContent => ({
+      ...prevContent,
+      [key]: value
+    }))
+  }
+
+  const handleCreatePost = async () => {
+    try {
+      setIsLoading(true)
+
+      if (contentLength > 2200) {
+        return toast.error(
+          'Não é possível criar uma postagem com mais de 2.200 caracteres.'
+        )
+      }
+
+      await instanceContent.posts.createPost({
+        creator: userData,
+        postContent: postContent,
+        locale: 'pt'
+      })
+
+      setCurrentStep(2)
+    } catch (createPostError) {
+      console.error(
+        `ERROR! An error occurred while tried to create the post: ${createPostError}`
+      )
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleEditPostContent = async (text: string, e) => {
+    setPostContentValues('content', text)
+    setContentLength(e.target.value.length)
+  }
 
   useEffect(() => {
     const textarea = document.getElementById('post-content')
@@ -22,9 +76,9 @@ export const SecondStep: React.FC<SecondStepProps> = ({
 
   return (
     <section className="flex w-full min-w-full max-w-4xl justify-between rounded-md bg-white">
-      <figure className="min-h-full w-full xl:max-w-xl">
+      <figure className="group min-h-full w-full cursor-zoom-in xl:max-w-3xl">
         <Image
-          className="w-full rounded-sm object-cover"
+          className="w-full rounded-sm object-cover transition-all duration-300 group-hover:brightness-95"
           src={imageUrl}
           alt="New Post Image"
           width={1920}
@@ -48,7 +102,7 @@ export const SecondStep: React.FC<SecondStepProps> = ({
           className="min-h-20 resize-none bg-transparent text-sm text-slate-600 outline-0"
           autoComplete="off"
           spellCheck={false}
-          onChange={e => setContentLength(e.target.value.length)}
+          onChange={e => handleEditPostContent(e.target.value, e)}
           placeholder="Digite o conteúdo da sua publicação aqui"
           id="post-content"
         />
@@ -61,30 +115,27 @@ export const SecondStep: React.FC<SecondStepProps> = ({
           </span>
         </div>
         <article className="mt-3 flex w-full flex-col gap-5">
-          <div className="flex items-center justify-between cursor-pointer">
+          <div className="flex cursor-pointer items-center justify-between">
             <p className="w-full text-sm text-slate-500">
               Adicionar localização
             </p>
             <LocationPin className="text-slate-500" />
           </div>
-          <div className="flex items-center justify-between cursor-pointer">
+          <div className="flex cursor-pointer items-center justify-between">
             <p className="w-full text-sm text-slate-500">
               Adicionar participantes
             </p>
             <Collaborator className="text-slate-500" />
           </div>
-          <div className="flex items-center justify-betwee cursor-pointern">
-            <p className="w-full text-sm text-slate-500">
-              Acessibilidade
-            </p>
-            <DropdownArrow className="text-slate-500" />
-          </div>
-          <div className="flex items-center justify-between cursor-pointer">
+          <div className="flex cursor-pointer items-center justify-between">
             <p className="w-full text-sm text-slate-500">
               Configurações adicionais
             </p>
             <DropdownArrow className="text-slate-500" />
           </div>
+          <Button variant="secondary" className="mt-6 min-w-full md:text-sm">
+            Publicar
+          </Button>
         </article>
       </article>
     </section>

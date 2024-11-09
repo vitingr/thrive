@@ -14,3 +14,5 @@ interface PagesType {
     description?: string
   }
 }
+
+export type Locale = 'pt' | 'en'

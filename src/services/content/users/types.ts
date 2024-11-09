@@ -1,3 +1,5 @@
+import { Locale } from "@/constants/internationalization/types"
+
 export interface GetUserByEmailData {
   email: string
 }

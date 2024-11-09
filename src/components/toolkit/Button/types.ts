@@ -7,8 +7,6 @@ type ButtonVariantProp =
   | 'secondaryOutline'
   | 'danger'
   | 'custom'
-  | 'tmdPrimary'
-  | 'tmdSecondary'
 
 type ButtonSizeProp = 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'
 

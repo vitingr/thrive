@@ -17,7 +17,7 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: ['text-slate-50', 'bg-indigo-500', 'hover:brightness-[120%]'],
+        primary: ['text-slate-50', 'bg-indigo-500', 'hover:brightness-[125%]'],
         primaryOutline: [
           'text-indigo-600',
           'border',
@@ -31,7 +31,7 @@ export const buttonVariants = cva(
           'bg-gradient-to-tr',
           'from-slate-900',
           'to-slate-800',
-          'hover:brightness-[115%]'
+          'hover:brightness-[125%]'
         ],
         secondaryOutline: [
           'text-slate-700',
@@ -40,16 +40,6 @@ export const buttonVariants = cva(
           'hover:bg-slate-800',
           'hover:border-slate-800',
           'hover:text-slate-50'
-        ],
-        tmdPrimary: [
-          'bg-yellow-400',
-          'text-slate-700',
-          'hover:brightness-[115%]'
-        ],
-        tmdSecondary: [
-          'bg-slate-50',
-          'text-slate-700',
-          'hover:brightness-[90%]'
         ],
         danger: [
           'text-slate-50',
