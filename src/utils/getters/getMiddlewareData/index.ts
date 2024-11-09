@@ -25,7 +25,6 @@ export const getMiddlewareData = (): GetMiddlewareDataReturn => {
   const headersStore = headers()
 
   const cookiesUserAgent = getCookieValue<CookiesUserAgent>(
-    // @ts-expect-error
     cookieStore.get('userAgent')
   )
 
