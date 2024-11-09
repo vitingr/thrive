@@ -1,10 +1,38 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import createIntlMiddleware from 'next-intl/middleware'
+// import { NextRequest, NextResponse } from 'next/server'
 
-const isProtectedRoute = createRouteMatcher([
-  '/feed(.*)'
-])
+import {
+  localePrefix,
+  locales,
+  pathsObj
+} from './constants/internationalization'
 
-export default clerkMiddleware()
+const isProtectedRoute = createRouteMatcher(['/feed(.*)'])
+
+const intlMiddleware = createIntlMiddleware({
+  defaultLocale: 'pt',
+  localePrefix: 'always',
+  locales,
+  pathnames: pathsObj
+})
+
+export default clerkMiddleware((auth, req) => {
+  return intlMiddleware(req)
+})
+
+// export async function middleware(request: NextRequest) {
+//   const intlResponse = intlMiddleware(request)
+//   if (intlResponse) {
+//     intlResponse.cookies.set('current-pathname', request.nextUrl.pathname)
+//     intlResponse.cookies.set('current-url', request.nextUrl.href)
+
+//     return intlResponse
+//   }
+
+//   const response = NextResponse.next()
+//   return response
+// }
 
 export const config = {
   matcher: [

@@ -1,4 +1,4 @@
-export type Locale = 'pt' | 'es' | 'en'
+export type Locale = 'pt' | 'en'
 
 export interface Paths {
   [path: string]: {
