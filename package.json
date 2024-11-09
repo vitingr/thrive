@@ -36,6 +36,7 @@
     "next": "14.2.15",
     "next-auth": "^4.24.7",
     "next-cloudinary": "^6.11.0",
+    "next-intl": "^3.25.0",
     "plyr": "^3.7.8",
     "plyr-react": "^5.3.0",
     "prettier": "^3.3.3",
