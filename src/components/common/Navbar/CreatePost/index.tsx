@@ -33,7 +33,7 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
   return (
     <>
       <button
-        className="flex w-full max-w-[100px] cursor-pointer items-center gap-2 rounded-full bg-blue-500 px-4 py-2 transition-all duration-300 hover:brightness-125"
+        className="hidden w-full max-w-[100px] cursor-pointer items-center gap-2 rounded-full bg-blue-500 px-4 py-2 transition-all duration-300 hover:brightness-125 lg:flex"
         onClick={() => setIsModalOpen(!isModalOpen)}
       >
         <IoAddSharp className="white-icon" fill="#f8fafc" size={20} />

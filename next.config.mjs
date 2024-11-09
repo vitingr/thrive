@@ -1,40 +1,43 @@
-import path from "path";
-import { fileURLToPath } from "url";
+import createNextIntlPlugin from 'next-intl/plugin'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+const withNextIntl = createNextIntlPlugin()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
+    includePaths: [path.join(__dirname, 'styles')]
   },
   eslint: { ignoreDuringBuilds: true },
   reactStrictMode: false,
   images: {
     domains: [
-      "lh3.googleusercontent.com",
-      "res.cloudinary.com",
-      "img.clerk.com",
+      'lh3.googleusercontent.com',
+      'res.cloudinary.com',
+      'img.clerk.com'
     ],
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
+        protocol: 'https',
+        hostname: '**'
+      }
+    ]
   },
   webpack(config) {
     // Adicionar alias para '@'
-    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src')
 
     // Adicionar suporte para topLevelAwait
     config.experiments = {
       ...config.experiments,
-      topLevelAwait: true,
-    };
+      topLevelAwait: true
+    }
 
-    return config;
-  },
-};
+    return config
+  }
+}
 
-export default nextConfig;
+export default withNextIntl(nextConfig)
