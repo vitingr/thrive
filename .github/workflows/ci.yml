@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  sandbox-continuos-integration:
+  continuos-integration:
     runs-on: ubuntu-latest
 
     steps:

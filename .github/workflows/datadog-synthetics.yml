@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: environment_variables
 
     steps:
     - uses: actions/checkout@v4

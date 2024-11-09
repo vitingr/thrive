@@ -12,7 +12,7 @@ const getIconSize = (buttonSize: string) => {
     xl: 'h-7 w-7',
     '2xl': 'h-7 w-7'
   }
-  // @ts-expect-error
+
   return sizeClasses[buttonSize]
 }
 export const LoadingIcon: React.FC<LoadingIconProps> = ({ buttonSize }) => {

@@ -129,7 +129,7 @@ export const SecondStep: React.FC<SecondStepProps> = ({
           </div>
           <div className="flex cursor-pointer items-center justify-between">
             <p className="w-full text-sm text-slate-500">
-              Configurações adicionais
+              Configurações adicionais.
             </p>
             <DropdownArrow className="text-slate-500" />
           </div>

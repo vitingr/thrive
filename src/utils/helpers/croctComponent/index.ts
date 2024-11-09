@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { fetchContent } from '@/utils/getters/croctFetchContent'
 
 import {
   CroctComponentProps,

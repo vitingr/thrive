@@ -1,6 +1,8 @@
 import { getMetaData } from '@/utils/getters/getMetaData'
-import { SignIn } from '@clerk/nextjs'
 import { NextPage } from 'next'
+
+import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
+import { SignInWrapper } from './SignInWrapper'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -11,12 +13,8 @@ export async function generateMetadata() {
   })
 }
 
-const Page: NextPage = () => {
-  return (
-    <main className="flex w-full items-center justify-center">
-      <SignIn />
-    </main>
-  )
+const Page: NextPage<NextPageDefaultProps> = ({ params: { locale } }) => {
+  return <SignInWrapper />
 }
 
 export default Page
