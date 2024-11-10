@@ -1,5 +1,7 @@
-import { User } from '@/types/models/user'
 import { AxiosInstance } from 'axios'
+
+import { User } from '@/types/models/user'
+
 import { CreateUserData, GetUserByEmailData } from './types'
 
 export class Users {

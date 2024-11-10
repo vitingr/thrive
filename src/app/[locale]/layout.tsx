@@ -1,14 +1,14 @@
+import { NextPage } from 'next'
+import { getServerSession } from 'next-auth'
+import { notFound } from 'next/navigation'
+import { PropsWithChildren } from 'react'
+
 import { Navbar } from '@/components/common/Navbar'
 import ToastMessage from '@/components/toolkit/ToastMessage'
-
-import { NextPage } from 'next'
 import { locales } from '@/constants/internationalization'
-import { notFound } from 'next/navigation'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/libs/auth'
-import NextAuthProvider from '@/contexts/NextAuthProvider'
-import { PropsWithChildren } from 'react'
 import { Locale } from '@/constants/internationalization/types'
+import NextAuthProvider from '@/contexts/NextAuthProvider'
+import { authOptions } from '@/libs/auth'
 
 import '@/styles/index.scss'
 

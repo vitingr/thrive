@@ -1,4 +1,5 @@
 import { Button } from '@/components/toolkit/Button'
+
 import { UploadButtonProps } from './types'
 
 export const UploadButton: React.FC<UploadButtonProps> = ({
@@ -35,12 +36,12 @@ export const UploadButton: React.FC<UploadButtonProps> = ({
     <>
       <Button isLoading={isLoading} variant="secondary">
         <input
-          type="file"
-          name="image"
-          id="image"
           accept="image/*"
-          onChange={e => handleChangeImage(e)}
           className="absolute left-1/2 top-1/2 z-30 mt-8 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer pb-16 opacity-0"
+          id="image"
+          name="image"
+          onChange={e => handleChangeImage(e)}
+          type="file"
         />
         {children}
       </Button>

@@ -1,10 +1,11 @@
-import { Anchor } from '@/components/toolkit/Anchor'
 import Image from 'next/image'
+
+import { Anchor } from '@/components/toolkit/Anchor'
 
 export const Navigation: React.FC = () => {
   return (
     <div className="flex w-full items-center justify-start gap-4">
-      <Anchor href="#" className="max-w-12" variant="custom">
+      <Anchor className="max-w-12" href="#" variant="custom">
         <Image alt="Logo" height={93} src="/logos/logo.png" width={93} />
       </Anchor>
       <div className="relative flex w-full flex-1 lg:max-w-[300px]">

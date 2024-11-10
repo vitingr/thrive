@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/libs/auth'

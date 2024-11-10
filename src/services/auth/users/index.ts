@@ -1,6 +1,8 @@
-import axios, { AxiosInstance } from 'axios'
-import { CreateUserData, LoginUserData, LoginUserReturn } from './types'
+import { AxiosInstance } from 'axios'
+
 import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
+
+import { CreateUserData, LoginUserData, LoginUserReturn } from './types'
 
 export class Users {
   private instance: AxiosInstance

@@ -1,5 +1,5 @@
-import { NavbarProps } from './types'
 import { Navigation } from './Navigation'
+import { NavbarProps } from './types'
 import { UserActions } from './UserActions'
 
 export const Navbar: React.FC<NavbarProps> = async () => {

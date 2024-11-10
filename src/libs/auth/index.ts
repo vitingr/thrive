@@ -2,9 +2,10 @@ import { AuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
+import { User } from '@/types/models/user'
+
 import { credentialsOptions } from './credentialsOptions'
 import { googleOptions } from './googleOptions'
-import { User } from '@/types/models/user'
 
 export const authOptions: AuthOptions = {
   providers: [

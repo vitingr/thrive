@@ -1,17 +1,15 @@
-import { Locale } from "@/constants/internationalization/types"
-
 export interface GetUserByEmailData {
   email: string
 }
 
 export interface CreateUserData {
-  uid: string
-  username: string
-  firstname: string
-  lastname: string
-  email: string
-  profile_picture: string
   background_picture: string
+  email: string
+  firstname: string
   followers: number
   following: number
+  lastname: string
+  profile_picture: string
+  uid: string
+  username: string
 }

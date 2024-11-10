@@ -1,6 +1,8 @@
 import Image from 'next/image'
-import { PEOPLE_YOU_MIGHT_KNOW } from './data'
+
 import { CircleButton } from '@/components/common/CircleButton'
+
+import { PEOPLE_YOU_MIGHT_KNOW } from './data'
 
 export const PeopleYouMightKnow: React.FC = () => {
   return (
@@ -10,14 +12,17 @@ export const PeopleYouMightKnow: React.FC = () => {
       </h2>
       <ul className="flex flex-col divide-y divide-slate-200">
         {PEOPLE_YOU_MIGHT_KNOW.map((user, index: number) => (
-          <li className="flex cursor-pointer items-center gap-3 py-2 pl-2 transition-all duration-300 hover:bg-slate-100" key={`${user.name}-${index}`}>
+          <li
+            className="flex cursor-pointer items-center gap-3 py-2 pl-2 transition-all duration-300 hover:bg-slate-100"
+            key={`${user.name}-${index}`}
+          >
             <figure className="w-full max-w-10 rounded-full">
               <Image
-                width={100}
+                alt={`profile-picture-${user.name}`}
                 className="h-10 w-10 rounded-full object-cover"
                 height={100}
                 src={user.picture}
-                alt={`profile-picture-${user.name}`}
+                width={100}
               />
             </figure>
             <div className="flex w-full flex-col">

@@ -1,7 +1,9 @@
 import { AxiosInstance } from 'axios'
-import { CreateUserData, LoginLinkedinUserData } from './types'
-import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
+
 import { User } from '@/types/models/user'
+import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
+
+import { CreateUserData, LoginLinkedinUserData } from './types'
 
 export class Sso {
   private instance: AxiosInstance

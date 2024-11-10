@@ -1,6 +1,8 @@
 import { IoApps } from 'react-icons/io5'
-import { CreatePost } from '../CreatePost'
+
 import { getUserSession } from '@/utils/auth/getUserSession'
+
+import { CreatePost } from '../CreatePost'
 import { UserScope } from './UserScope'
 
 export const UserActions: React.FC = async () => {

@@ -1,14 +1,10 @@
 import createIntlMiddleware from 'next-intl/middleware'
-
-import {
-  localePrefix,
-  locales,
-  pathsObj
-} from './constants/internationalization'
 import { NextRequest, NextResponse } from 'next/server'
-import { hasUTMStoredMiddleware } from './middlewares/hasUTMStoredMiddleware'
+
+import { locales, pathsObj } from './constants/internationalization'
 import { getSearchParamsMiddleware } from './middlewares/getSearchParams'
 import { getUserAgentMiddleware } from './middlewares/getUserAgent'
+import { hasUTMStoredMiddleware } from './middlewares/hasUTMStoredMiddleware'
 
 const intlMiddleware = createIntlMiddleware({
   defaultLocale: 'pt',

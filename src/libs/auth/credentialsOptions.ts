@@ -1,5 +1,6 @@
-import { auth } from '@/instances/instanceAuth'
 import { User as NextAuthUser } from 'next-auth'
+
+import { auth } from '@/instances/instanceAuth'
 
 export const credentialsOptions = {
   id: 'credentials',

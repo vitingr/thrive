@@ -5,10 +5,10 @@ import { IoAddSharp } from 'react-icons/io5'
 
 import { Modal } from '@/components/toolkit/Modal'
 
-import { CreatePostProps } from './types'
-import { SecondStep } from './SecondStep'
 import { FirstStep } from './FirstStep'
+import { SecondStep } from './SecondStep'
 import { ThirdStep } from './ThirdStep'
+import { CreatePostProps } from './types'
 
 export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -17,17 +17,17 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
 
   const STEPS = [
     <FirstStep
-      setImageUrl={setImageUrl}
-      setCurrentStep={setCurrentStep}
       key="first-step"
+      setCurrentStep={setCurrentStep}
+      setImageUrl={setImageUrl}
     />,
     <SecondStep
-      userData={userData}
       imageUrl={imageUrl}
-      setCurrentStep={setCurrentStep}
       key="second-step"
+      setCurrentStep={setCurrentStep}
+      userData={userData}
     />,
-    <ThirdStep setCurrentStep={setCurrentStep} key="third-step" />
+    <ThirdStep key="third-step" setCurrentStep={setCurrentStep} />
   ]
 
   return (

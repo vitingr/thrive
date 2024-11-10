@@ -4,7 +4,7 @@ export const DropdownArrow: React.FC<IconProps> = props => {
   return (
     <svg
       aria-label="Dropdown Arrow Icon"
-      className="block relative"
+      className="relative block"
       fill="currentColor"
       height="18"
       role="img"

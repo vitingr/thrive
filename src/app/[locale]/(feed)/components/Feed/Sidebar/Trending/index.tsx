@@ -1,6 +1,7 @@
 import { CircleButton } from '@/components/common/CircleButton'
-import { TrendingProps } from './types'
+
 import { TRENDING_TOPICS } from './data'
+import { TrendingProps } from './types'
 
 export const Treding: React.FC<TrendingProps> = () => {
   return (
@@ -9,11 +10,11 @@ export const Treding: React.FC<TrendingProps> = () => {
       <ul className="flex flex-col divide-y divide-slate-200">
         {TRENDING_TOPICS.map((topic, index: number) => (
           <li
-            className="flex cursor-pointer flex-col py-2 px-2 transition-all duration-300 hover:bg-slate-100"
+            className="flex cursor-pointer flex-col px-2 py-2 transition-all duration-300 hover:bg-slate-100"
             key={`${topic}-${index}`}
           >
             <p className="text-xs text-slate-500">Assunto do momento</p>
-            <p className="text-sm line-clamp-1">{topic}</p>
+            <p className="line-clamp-1 text-sm">{topic}</p>
           </li>
         ))}
       </ul>
