@@ -48,6 +48,12 @@ export const SecondStep: React.FC<SecondStepProps> = ({
         )
       }
 
+      if (contentLength === 0) {
+        return toast.error(
+          'Postagem muito curta! deve contar pelo menos um caractere.'
+        )
+      }
+
       await instanceContent.posts.createPost({
         creator: userData,
         postContent: postContent,
