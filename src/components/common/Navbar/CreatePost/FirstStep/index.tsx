@@ -1,11 +1,12 @@
 'use client'
 
+import { useState } from 'react'
+
 import { UploadButton } from '@/components/common/UploadButton'
+import { uploadImage } from '@/utils/helpers/uploadImage'
+
 import { MediaIcon } from '../icons/Media'
 import { FirstStepProps } from './types'
-import { useState } from 'react'
-import { toast } from 'react-toastify'
-import { uploadImage } from '@/utils/helpers/uploadImage'
 
 export const FirstStep: React.FC<FirstStepProps> = ({
   setImageUrl,
@@ -34,11 +35,11 @@ export const FirstStep: React.FC<FirstStepProps> = ({
           Insira fotos e vídeos aqui
         </p>
         <UploadButton
-          isLoading={isLoading}
-          setImagePath={setImageUrl}
           uploadImageAction={async (path: string) =>
             await handleUploadImage(path)
           }
+          isLoading={isLoading}
+          setImagePath={setImageUrl}
         >
           Escolher imagem do computador
         </UploadButton>

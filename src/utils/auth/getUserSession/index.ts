@@ -1,28 +1,13 @@
-import { currentUser } from "@clerk/nextjs/server"
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 
-export const getUserSession = async () => {
-  const user = await currentUser()
+import { getServerSession } from 'next-auth'
 
-  if (!user) {
-    console.error("User is null or undefined in Clerk")
-    return { session: null }
-  }
+import { authOptions } from '@/libs/auth'
+import { User } from '@/types/models/user'
 
-  const request = await fetch('http://localhost:3000/api/users/get-user', {
-    method: 'POST',
-    next: {
-      revalidate: 5 * 60
-    },
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ session: user })
-  })
+export const getUserSession = async (): Promise<User> => {
+  const session = await getServerSession(authOptions)
 
-  if (request.ok) {
-    const response = await request.json()
-    return { session: response }
-  }
-
-  return { session: null }
+  // @ts-expect-error
+  return session?.user
 }

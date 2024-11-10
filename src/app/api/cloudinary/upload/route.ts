@@ -1,8 +1,9 @@
+import { v2 as cloudinary } from 'cloudinary'
+import { NextResponse } from 'next/server'
+
 import { cloudinaryApk } from '@/constants/environments/cloudinaryApk'
 import { cloudinaryCloudName } from '@/constants/environments/cloudinaryName'
 import { cloudinarySecret } from '@/constants/environments/cloudinarySecret'
-import { v2 as cloudinary } from 'cloudinary'
-import { NextResponse } from 'next/server'
 
 cloudinary.config({
   cloud_name: cloudinaryCloudName,

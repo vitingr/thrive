@@ -1,15 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import { PostContent, SecondStepProps } from './types'
 import { useEffect, useState } from 'react'
-import { EmojiIcon } from '../icons/Emoji'
-import { LocationPin } from '../icons/LocationPin'
+import { toast } from 'react-toastify'
+
+import { Button } from '@/components/toolkit/Button'
+import { instanceContent } from '@/instances/instanceContent'
+
 import { Collaborator } from '../icons/Collaborator'
 import { DropdownArrow } from '../icons/DropdownArrow'
-import { Button } from '@/components/toolkit/Button'
-import { toast } from 'react-toastify'
-import { instanceContent } from '@/instances/instanceContent'
+import { EmojiIcon } from '../icons/Emoji'
+import { LocationPin } from '../icons/LocationPin'
+import { PostContent, SecondStepProps } from './types'
 
 export const SecondStep: React.FC<SecondStepProps> = ({
   imageUrl,
@@ -48,9 +50,15 @@ export const SecondStep: React.FC<SecondStepProps> = ({
         )
       }
 
+      if (contentLength === 0) {
+        return toast.error(
+          'Postagem muito curta! deve contar pelo menos um caractere.'
+        )
+      }
+
       await instanceContent.posts.createPost({
         creator: userData,
-        postContent: postContent,
+        postContent,
         locale: 'pt'
       })
 
@@ -78,33 +86,33 @@ export const SecondStep: React.FC<SecondStepProps> = ({
     <section className="flex w-full min-w-full max-w-4xl justify-between rounded-md bg-white">
       <figure className="group min-h-full w-full cursor-zoom-in xl:max-w-3xl">
         <Image
-          className="w-full rounded-sm object-cover transition-all duration-300 group-hover:brightness-95"
-          src={imageUrl}
           alt="New Post Image"
-          width={1920}
+          className="w-full rounded-sm object-cover transition-all duration-300 group-hover:brightness-95"
           height={1920}
+          src={imageUrl}
+          width={1920}
         />
       </figure>
       <article className="flex w-full flex-col gap-4 p-6">
         <div className="flex items-center gap-2">
           <figure className="h-6 w-6 rounded-full lg:h-8 lg:w-8">
             <Image
-              src={userData.profile_picture}
               alt={userData.firstname}
               className="rounded-full"
-              width={600}
               height={600}
+              src={userData.profile_picture}
+              width={600}
             />
           </figure>
           <p className="text-sm">{userData.username}</p>
         </div>
         <textarea
-          className="min-h-20 resize-none bg-transparent text-sm text-slate-600 outline-0"
           autoComplete="off"
-          spellCheck={false}
+          className="min-h-20 resize-none bg-transparent text-sm text-slate-600 outline-0"
+          id="post-content"
           onChange={e => handleEditPostContent(e.target.value, e)}
           placeholder="Digite o conteúdo da sua publicação aqui"
-          id="post-content"
+          spellCheck={false}
         />
         <div className="flex w-full items-center justify-between gap-2">
           <figure className="flex w-full items-center justify-start">
@@ -133,7 +141,12 @@ export const SecondStep: React.FC<SecondStepProps> = ({
             </p>
             <DropdownArrow className="text-slate-500" />
           </div>
-          <Button variant="secondary" className="mt-6 min-w-full md:text-sm">
+          <Button
+            className="mt-6 min-w-full md:text-sm"
+            isLoading={isLoading}
+            onClick={() => handleCreatePost()}
+            variant="secondary"
+          >
             Publicar
           </Button>
         </article>

@@ -13,7 +13,7 @@ export const PEOPLE_YOU_MIGHT_KNOW = [
   },
   {
     name: 'Jonas Johnson',
-    followed_by: ['Marcus López', 'Divanir Bastos', "André Gomes"],
+    followed_by: ['Marcus López', 'Divanir Bastos', 'André Gomes'],
     picture:
       'https://i.pinimg.com/originals/a1/79/d2/a179d241a0b2d225bba86c377ef74b89.jpg'
   }

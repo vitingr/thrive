@@ -1,35 +1,43 @@
+import { NextPage } from 'next'
+import { getServerSession } from 'next-auth'
+import { notFound } from 'next/navigation'
+import { PropsWithChildren } from 'react'
+
 import { Navbar } from '@/components/common/Navbar'
 import ToastMessage from '@/components/toolkit/ToastMessage'
-import { ClerkProvider } from '@clerk/nextjs'
+import { locales } from '@/constants/internationalization'
+import { Locale } from '@/constants/internationalization/types'
+import NextAuthProvider from '@/contexts/NextAuthProvider'
+import { authOptions } from '@/libs/auth'
 
 import '@/styles/index.scss'
-import { NextPage } from 'next'
-import { NextLayoutDefaultProps } from '@/types/nextLayoutDefaultProps'
-import { locales } from '@/constants/internationalization'
-import { notFound } from 'next/navigation'
 
-const RootLayout: NextPage<NextLayoutDefaultProps> = ({
+interface RootLayoutProps extends PropsWithChildren {
+  params: { locale: Locale }
+}
+
+export const generateStaticParams = () => {
+  return locales?.map(locale => ({ locale }))
+}
+
+const RootLayout: NextPage<RootLayoutProps> = async ({
   children,
   params: { locale }
-}: Readonly<{
-  children: React.ReactNode
-  params: { locale: string }
-}>) => {
-  const isValidLocale = locales.some(cur => cur === locale)
-  if (!isValidLocale) {
-    return notFound()
-  }
+}) => {
+  if (!locales.includes(locale)) notFound()
+
+  const session = await getServerSession(authOptions)
 
   return (
-    <ClerkProvider>
-      <html lang={locale}>
-        <body className="bg-neutral-100">
+    <html lang={locale}>
+      <body className="bg-neutral-100">
+        <NextAuthProvider session={session}>
           <ToastMessage />
           <Navbar />
           {children}
-        </body>
-      </html>
-    </ClerkProvider>
+        </NextAuthProvider>
+      </body>
+    </html>
   )
 }
 

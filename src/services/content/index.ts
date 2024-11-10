@@ -3,7 +3,6 @@ import axios, { AxiosInstance } from 'axios'
 import { Groups } from './groups'
 import { Posts } from './posts'
 import { Users } from './users'
-import { CONTENT_API_KEY } from '@/constants/environments/contentApk'
 
 export class Content {
   private instance: AxiosInstance

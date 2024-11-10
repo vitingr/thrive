@@ -1,4 +1,5 @@
 import { AxiosInstance } from 'axios'
+
 import { createPostData } from './types'
 
 export class Posts {
@@ -22,8 +23,8 @@ export class Posts {
         type: 'image',
         creatorId: creator.id,
         number_likes: 0,
-        creator: creator,
-        locale: locale
+        creator,
+        locale
       })
     } catch (err) {
       console.error({ createPostErrorMessage: err.message })
