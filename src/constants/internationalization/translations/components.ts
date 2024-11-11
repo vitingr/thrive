@@ -1,3 +1,1 @@
-export const components = {
-  common: 'common'
-}
+export const components = {}

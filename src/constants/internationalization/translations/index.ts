@@ -1,10 +1,10 @@
-import { getDictionaryPath } from '@/utils/getters/getDictionaryPaths'
+// import { getDictionaryPath } from '@/utils/getters/getDictionaryPaths'
 
-import { components } from './components'
+// import { components } from './components'
 import { pages } from './pages'
 
 const translations = {
-  ...getDictionaryPath(components, 'components/'),
+  // ...getDictionaryPath(components, 'components/'),
   ...pages
 }
 

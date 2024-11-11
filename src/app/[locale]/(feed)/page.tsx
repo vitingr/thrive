@@ -2,6 +2,7 @@ import Footer from '@/components/common/Footer'
 import { getMetaData } from '@/utils/getters/getMetaData'
 
 import { Feed } from './components/Feed'
+import { Navbar } from '@/components/common/Navbar'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -15,9 +16,12 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <main className="pt-8">
-      <Feed />
+    <>
+      <Navbar />
+      <main className="pt-8">
+        <Feed />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

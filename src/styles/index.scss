@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './fonts/index.scss';
+
 html {
   scroll-behavior: smooth;
 
@@ -21,8 +23,13 @@ html {
   font-size: 16px;
 }
 
+// Libs
+@import 'animate.css';
+@import 'react-toastify/dist/ReactToastify.min.css';
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
 @import 'plyr-react/plyr.css';
-@import './fonts/index.scss';
 
 .plyrVideoPlayer {
   --plyr-color-main: #3b82f6;

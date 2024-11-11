@@ -3,7 +3,6 @@ import { getServerSession } from 'next-auth'
 import { notFound } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 
-import { Navbar } from '@/components/common/Navbar'
 import ToastMessage from '@/components/toolkit/ToastMessage'
 import { locales } from '@/constants/internationalization'
 import { Locale } from '@/constants/internationalization/types'
@@ -33,7 +32,6 @@ const RootLayout: NextPage<RootLayoutProps> = async ({
       <body className="bg-neutral-100">
         <NextAuthProvider session={session}>
           <ToastMessage />
-          <Navbar />
           {children}
         </NextAuthProvider>
       </body>
