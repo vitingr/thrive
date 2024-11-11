@@ -1,0 +1,9 @@
+{
+  "content": {
+    "search": "Search",
+    "create": "Create",
+    "login": {
+      "label": "Login"
+    }
+  }
+}

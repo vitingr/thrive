@@ -1,8 +1,9 @@
 import Image from 'next/image'
 
 import { Anchor } from '@/components/toolkit/Anchor'
+import { NavigationProps } from './types'
 
-export const Navigation: React.FC = () => {
+export const Navigation: React.FC<NavigationProps> = ({ copy }) => {
   return (
     <div className="flex w-full items-center justify-start gap-4">
       <Anchor className="max-w-12" href="#" variant="custom">
@@ -14,7 +15,7 @@ export const Navigation: React.FC = () => {
           className="w-full rounded-full border border-slate-200 bg-white px-4 py-2 text-sm outline-none duration-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
           id="search"
           name="search"
-          placeholder="Pesquisar..."
+          placeholder={copy.search}
           type="text"
         />
       </div>

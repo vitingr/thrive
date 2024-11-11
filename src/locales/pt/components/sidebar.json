@@ -1,0 +1,30 @@
+{
+  "content": {
+    "peopleYouMightKnow": {
+      "title": "Pessoas que você talvez conheça"
+    },
+    "trending": {
+      "title": "Veja o que está em alta",
+      "defaultPosts": [
+        {
+          "prefix": "Em alta",
+          "title": "Corrida de Santos"
+        },
+        {
+          "prefix": "Em alta",
+          "title": "Vegano morre engasgado com alface"
+        },
+        {
+          "prefix": "Em alta",
+          "title": "Como montar uma rotina de treinos"
+        },
+        {
+          "prefix": "Em alta",
+          "title": "Novo bacon de carne de frango integral"
+        }
+      ]
+    },
+    "seeMore": "Ver mais",
+    "followedBy": "Seguido por"
+  }
+}

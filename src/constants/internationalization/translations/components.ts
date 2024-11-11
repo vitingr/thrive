@@ -1,1 +1,4 @@
-export const components = {}
+export const components = {
+  "navbar": "navbar",
+  "sidebar": "sidebar"
+}

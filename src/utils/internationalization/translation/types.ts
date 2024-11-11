@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Messages } from "@/constants/internationalization/messages"
 
-import { Dictionaries } from '@/types/internationalization'
-
-export interface TranslationReturn<Dictionary extends keyof Dictionaries> {
-  plain: (key: keyof Dictionaries[Dictionary]) => string
-  raw: <K extends keyof Dictionaries[Dictionary]>(
+export interface TranslationReturn<Dictionary extends keyof Messages> {
+  plain: (key: keyof Messages[Dictionary]) => string
+  raw: <K extends keyof Messages[Dictionary]>(
     key: K
-  ) => Dictionaries[Dictionary][K]
+  ) => Messages[Dictionary][K]
 }

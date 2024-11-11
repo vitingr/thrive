@@ -13,12 +13,22 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
         <input
           className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
           type="text"
+          placeholder={copy.name.placeholder}
+        />
+        <input
+          className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
+          type="text"
           placeholder={copy.email.placeholder}
         />
         <input
           className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
           type="text"
           placeholder={copy.password.placeholder}
+        />
+        <input
+          className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
+          type="text"
+          placeholder={copy.confirmPassword.placeholder}
         />
         <Button className="min-w-full rounded-md md:text-sm">
           {copy.button.label}

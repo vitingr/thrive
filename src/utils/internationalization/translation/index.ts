@@ -2,21 +2,21 @@
 
 import { getTranslations } from 'next-intl/server'
 
-import { Dictionaries } from '@/types/internationalization'
 
 import { TranslationReturn } from './types'
+import { Messages } from '@/constants/internationalization/messages'
 
-export const translation = async <Dictionary extends keyof Dictionaries>(
+export const translation = async <Dictionary extends keyof Messages>(
   dictionary: Dictionary
 ): Promise<TranslationReturn<Dictionary>> => {
   const t = await getTranslations(dictionary)
 
-  const raw = t.raw as <K extends keyof Dictionaries[Dictionary]>(
+  const raw = t.raw as <K extends keyof Messages[Dictionary]>(
     key: K
-  ) => Dictionaries[Dictionary][K]
+  ) => Messages[Dictionary][K]
 
   return {
-    plain: t as (key: keyof Dictionaries[Dictionary]) => string,
+    plain: t as (key: keyof Messages[Dictionary]) => string,
     raw
   }
 }

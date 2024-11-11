@@ -1,0 +1,30 @@
+{
+  "content": {
+    "peopleYouMightKnow": {
+      "title": "People You Might Know"
+    },
+    "trending": {
+      "title": "See What's Trending",
+      "defaultPosts": [
+        {
+          "prefix": "Trending",
+          "title": "Santos Marathon"
+        },
+        {
+          "prefix": "Trending",
+          "title": "Vegan Dies Choking on Lettuce"
+        },
+        {
+          "prefix": "Trending",
+          "title": "How to Build a Workout Routine"
+        },
+        {
+          "prefix": "Trending",
+          "title": "New Whole Chicken Bacon"
+        }
+      ]
+    },
+    "seeMore": "See More",
+    "followedBy": "Followed by"
+  }
+}

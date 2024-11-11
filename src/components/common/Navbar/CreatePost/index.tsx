@@ -10,7 +10,7 @@ import { SecondStep } from './SecondStep'
 import { ThirdStep } from './ThirdStep'
 import { CreatePostProps } from './types'
 
-export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
+export const CreatePost: React.FC<CreatePostProps> = ({ userData, copy }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [imageUrl, setImageUrl] = useState<string>('')
@@ -37,7 +37,7 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData }) => {
         onClick={() => setIsModalOpen(!isModalOpen)}
       >
         <IoAddSharp className="white-icon" fill="#f8fafc" size={20} />
-        <p className="text-sm font-medium text-white">Criar</p>
+        <p className="text-sm font-medium text-white">{copy.create}</p>
       </button>
 
       <Modal
