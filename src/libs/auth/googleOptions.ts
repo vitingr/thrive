@@ -5,6 +5,7 @@ export const googleOptions = {
   clientId: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   async profile(profile) {
+    console.log('getulio')
     // const cookie = cookies()
     // const locale = cookie.get('NEXT_LOCALE')?.value
     const user = await getUserSession()

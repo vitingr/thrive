@@ -14,6 +14,7 @@ export const authOptions: AuthOptions = {
   ],
   callbacks: {
     jwt: async data => {
+      console.log("a")
       const { user, token, trigger, session } = data
 
       let userData: User = token.userData as User
@@ -33,6 +34,7 @@ export const authOptions: AuthOptions = {
       return token
     },
     session: async props => {
+      console.log("b")
       const { session, token: jwt } = props
 
       const { userData } = jwt
@@ -42,7 +44,8 @@ export const authOptions: AuthOptions = {
     }
   },
   pages: {
-    signIn: '/?should_authenticate=true'
+    signIn: '/',
+    error: '/'
   },
   secret: process.env.NEXTAUTH_SECRET,
   session: {

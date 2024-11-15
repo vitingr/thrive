@@ -2,7 +2,13 @@ import { AxiosInstance } from 'axios'
 
 import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 
-import { CreateUserData, LoginUserData, LoginUserReturn } from './types'
+import {
+  CreateUserData,
+  GetUserByEmailData,
+  LoginUserData,
+  LoginUserReturn
+} from './types'
+import { User } from '@/types/models/user'
 
 export class Users {
   private instance: AxiosInstance
@@ -48,11 +54,31 @@ export class Users {
       return data
     } catch (error) {
       console.error({
-        AuthSendEmailErrorMessage: error.message
+        AuthLoginUserErrorMessage: error.message
       })
 
       return {
         error: error.message
+      }
+    }
+  }
+
+  getUserByEmail = async ({
+    email
+  }: GetUserByEmailData): Promise<ServiceRequestResponse<User>> => {
+    try {
+      const { data } = await this.instance.get(
+        `/users/get-user-by-email/${email}`
+      )
+
+      return data
+    } catch (getUserByEmailError) {
+      console.error({
+        AuthGetUserByEmailErrorMessage: getUserByEmailError.message
+      })
+
+      return {
+        error: getUserByEmailError.message
       }
     }
   }

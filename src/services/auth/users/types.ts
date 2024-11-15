@@ -12,3 +12,7 @@ export interface LoginUserReturn {
   message?: string
   user: User
 }
+
+export interface GetUserByEmailData {
+  email: string
+}

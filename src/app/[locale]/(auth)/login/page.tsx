@@ -20,7 +20,7 @@ const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
 
   return (
     <main className="flex h-screen w-screen flex-col items-center gap-4 justify-center bg-slate-100">
-      <AuthForm copy={raw('form')} />
+      <AuthForm copy={raw('form')} locale={locale} />
       <CreateAccount copy={raw('form')} />
     </main>
   )

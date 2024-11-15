@@ -10,12 +10,18 @@ export const credentialsOptions = {
       label: 'email',
       type: 'email'
     },
-    codeConfirm: { label: 'codeConfirm', type: 'string' }
+    password: {
+      label: 'password',
+      type: 'password'
+    }
   },
   async authorize(credentials) {
+    console.log('getulio')
     const {
       data: { user }
     } = await auth.users.loginUser(credentials)
+
+    console.log(user)
 
     return {
       ...user
