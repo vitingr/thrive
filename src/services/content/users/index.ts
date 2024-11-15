@@ -26,7 +26,6 @@ export class Users {
   }
 
   createUser = async ({
-    uid,
     username,
     firstname,
     lastname,
@@ -38,7 +37,6 @@ export class Users {
   }: CreateUserData): Promise<void> => {
     try {
       return this.instance.post(`/users`, {
-        uid,
         username,
         firstname,
         lastname,

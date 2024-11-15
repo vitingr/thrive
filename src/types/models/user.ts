@@ -7,6 +7,6 @@ export interface User {
   id: number
   lastname: string
   profile_picture: string
-  uid: string
   username: string
+  locale: string
 }

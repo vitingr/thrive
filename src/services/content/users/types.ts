@@ -10,6 +10,5 @@ export interface CreateUserData {
   following: number
   lastname: string
   profile_picture: string
-  uid: string
   username: string
 }

@@ -3,7 +3,12 @@
     "search": "Search",
     "create": "Create",
     "login": {
-      "label": "Login"
+      "label": "Login",
+      "href": "/en/login"
+    },
+    "signup": {
+      "label": "Create Account",
+      "href": "/en/cadastro"
     }
   }
 }

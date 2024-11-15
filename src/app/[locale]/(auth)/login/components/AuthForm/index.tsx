@@ -69,16 +69,14 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
   }
 
   const handleSignInWithGoogle = async () => {
-    console.log('a')
     setIsLoadingSubmit(prev => ({
       ...prev,
       google: true
     }))
-    console.log('b')
     try {
       signIn('google')
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 

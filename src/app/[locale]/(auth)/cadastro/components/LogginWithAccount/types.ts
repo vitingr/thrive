@@ -1,5 +1,5 @@
 import { Messages } from '@/constants/internationalization/messages'
 
-export interface CreateAccountProps {
+export interface LogginWithAccountProps {
   copy: Messages['auth']['form']
 }

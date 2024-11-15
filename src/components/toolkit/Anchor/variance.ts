@@ -13,7 +13,8 @@ export const anchorVariants = cva(
     'w-full',
     'tracking-wide',
     'transition',
-    'ease-in-out'
+    'ease-in-out',
+    'duration-300'
   ],
   {
     variants: {

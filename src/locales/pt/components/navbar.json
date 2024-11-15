@@ -3,7 +3,12 @@
     "search": "Pesquisar",
     "create": "Criar",
     "login": {
-      "label": "Login"
+      "label": "Login",
+      "href": "/pt/login"
+    },
+    "signup": {
+      "label": "Criar Conta",
+      "href": "/pt/cadastro"
     }
   }
 }

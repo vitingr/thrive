@@ -16,12 +16,9 @@ export const credentialsOptions = {
     }
   },
   async authorize(credentials) {
-    console.log('getulio')
     const {
       data: { user }
     } = await auth.users.loginUser(credentials)
-
-    console.log(user)
 
     return {
       ...user

@@ -30,7 +30,7 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData, copy }) => {
     <ThirdStep key="third-step" setCurrentStep={setCurrentStep} />
   ]
 
-  return (
+  return userData ? (
     <>
       <button
         className="hidden w-full max-w-[100px] cursor-pointer items-center gap-2 rounded-full bg-blue-500 px-4 py-2 transition-all duration-300 hover:brightness-125 lg:flex"
@@ -48,5 +48,5 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData, copy }) => {
         {STEPS[currentStep]}
       </Modal>
     </>
-  )
+  ) : null
 }
