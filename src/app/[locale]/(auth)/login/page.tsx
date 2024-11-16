@@ -7,8 +7,7 @@ import { CreateAccount } from './components/CreateAccount'
 
 export async function generateMetadata() {
   return getMetaData({
-    title:
-      'Encontre e participe de grupos com pessoas com objetivos saudáveis iguais ao seu na nossa plataforma',
+    title: 'Thrive',
     description:
       'Encontre e participe de grupos com pessoas com objetivos saudáveis iguais ao seu na nossa plataforma',
     opengraph: ''

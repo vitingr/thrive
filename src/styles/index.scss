@@ -45,5 +45,21 @@ html {
   color: white;
 }
 
+.red-icon * {
+  color: #ef4444
+}
+
+.slate-icon * {
+  color: #475569
+}
+
+.blue-icon * {
+  color: #3b82f6
+}
+
+.indigo-icon * {
+  color: #6366f1
+}
+
 // Components
 @import "./components/circle-button.scss";
