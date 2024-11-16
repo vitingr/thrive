@@ -18,9 +18,6 @@ export class Posts {
     locale
   }: createPostData): Promise<ServiceRequestResponse<Post>> => {
     try {
-      console.log("Vamos criar um post!")
-      console.log(postContent)
-      console.log(userId)
       const { data, status } = await this.instance.post('/posts', {
         content: postContent.content,
         location: postContent.location,
@@ -37,8 +34,6 @@ export class Posts {
 
       return data
     } catch (createPostError) {
-      console.log(createPostError)
-
       console.error({
         createPostErrorMessage: createPostError.message
       })
@@ -53,9 +48,6 @@ export class Posts {
     userId,
     locale
   }: GetPostsByLanguageData): Promise<ServiceRequestResponse<Post[]>> => {
-    const url = `/get-posts-by-language/${userId}/${locale}`
-    console.log('URL chamada:', url)
-
     try {
       const { data, status } = await this.instance.get(
         `/get-posts-by-language/${userId}/${locale}`

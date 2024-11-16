@@ -21,7 +21,6 @@ export const googleOptions = {
         })
 
         if (userData) {
-          console.log(`esse é o user data: ${JSON.stringify(userData)}`)
           return {
             ...userData
           }

@@ -42,10 +42,8 @@ export const SecondStep: React.FC<SecondStepProps> = ({
   }
 
   const handleCreatePost = async () => {
-    console.log('a1')
     try {
       setIsLoading(true)
-      console.log('a')
 
       if (contentLength > 2200) {
         return toast.error(
@@ -53,17 +51,12 @@ export const SecondStep: React.FC<SecondStepProps> = ({
         )
       }
 
-      console.log('b')
-
       if (contentLength === 0) {
         return toast.error(
           DEFAULT_MESSAGES_ERRORS[locale].requiredFieldTooSmall
         )
       }
 
-      console.log('c')
-
-      console.log('vai criar o post')
       await instanceContent.posts.createPost({
         userId: userData.id,
         postContent,
