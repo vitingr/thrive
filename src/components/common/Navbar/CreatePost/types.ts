@@ -3,5 +3,6 @@ import { User } from '@/types/models/user'
 
 export interface CreatePostProps {
   userData: User
-  copy: Messages["navbar"]["content"]
+  copy: Messages['navbar']['content']
+  locale: string
 }

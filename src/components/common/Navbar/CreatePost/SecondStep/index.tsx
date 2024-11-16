@@ -7,16 +7,17 @@ import { toast } from 'react-toastify'
 import { Button } from '@/components/toolkit/Button'
 import { instanceContent } from '@/instances/instanceContent'
 
-import { Collaborator } from '../icons/Collaborator'
-import { DropdownArrow } from '../icons/DropdownArrow'
 import { EmojiIcon } from '../icons/Emoji'
-import { LocationPin } from '../icons/LocationPin'
 import { PostContent, SecondStepProps } from './types'
+import { DEFAULT_MESSAGES_ERRORS } from '@/constants/errors/defaultMessageErrors'
+import { AditionalActions } from './AditionalActions'
 
 export const SecondStep: React.FC<SecondStepProps> = ({
   imageUrl,
   setCurrentStep,
-  userData
+  userData,
+  locale,
+  copy
 }) => {
   const [contentLength, setContentLength] = useState<number>(0)
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -41,25 +42,32 @@ export const SecondStep: React.FC<SecondStepProps> = ({
   }
 
   const handleCreatePost = async () => {
+    console.log('a1')
     try {
       setIsLoading(true)
+      console.log('a')
 
       if (contentLength > 2200) {
         return toast.error(
-          'Não é possível criar uma postagem com mais de 2.200 caracteres.'
+          DEFAULT_MESSAGES_ERRORS[locale].requiredNumberTooLarge
         )
       }
+
+      console.log('b')
 
       if (contentLength === 0) {
         return toast.error(
-          'Postagem muito curta! deve contar pelo menos um caractere.'
+          DEFAULT_MESSAGES_ERRORS[locale].requiredFieldTooSmall
         )
       }
 
+      console.log('c')
+
+      console.log('vai criar o post')
       await instanceContent.posts.createPost({
-        creator: userData,
+        userId: userData.id,
         postContent,
-        locale: 'pt'
+        locale: locale
       })
 
       setCurrentStep(2)
@@ -111,7 +119,7 @@ export const SecondStep: React.FC<SecondStepProps> = ({
           className="min-h-20 resize-none bg-transparent text-sm text-slate-600 outline-0"
           id="post-content"
           onChange={e => handleEditPostContent(e.target.value, e)}
-          placeholder="Digite o conteúdo da sua publicação aqui"
+          placeholder={copy.createPostForm.content.placeholder}
           spellCheck={false}
         />
         <div className="flex w-full items-center justify-between gap-2">
@@ -123,31 +131,14 @@ export const SecondStep: React.FC<SecondStepProps> = ({
           </span>
         </div>
         <article className="mt-3 flex w-full flex-col gap-5">
-          <div className="flex cursor-pointer items-center justify-between">
-            <p className="w-full text-sm text-slate-500">
-              Adicionar localização
-            </p>
-            <LocationPin className="text-slate-500" />
-          </div>
-          <div className="flex cursor-pointer items-center justify-between">
-            <p className="w-full text-sm text-slate-500">
-              Adicionar participantes
-            </p>
-            <Collaborator className="text-slate-500" />
-          </div>
-          <div className="flex cursor-pointer items-center justify-between">
-            <p className="w-full text-sm text-slate-500">
-              Configurações adicionais.
-            </p>
-            <DropdownArrow className="text-slate-500" />
-          </div>
+          <AditionalActions copy={copy} />
           <Button
             className="mt-6 min-w-full md:text-sm"
             isLoading={isLoading}
             onClick={() => handleCreatePost()}
             variant="secondary"
           >
-            Publicar
+            {copy.createPostForm.publish}
           </Button>
         </article>
       </article>

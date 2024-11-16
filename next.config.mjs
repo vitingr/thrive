@@ -26,6 +26,14 @@ const nextConfig = {
       }
     ]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/:locale/api/:path*',
+        destination: '/api/:path*'
+      }
+    ]
+  },
   webpack(config) {
     // Adicionar alias para '@'
     config.resolve.alias['@'] = path.resolve(__dirname, 'src')

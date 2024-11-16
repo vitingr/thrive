@@ -13,24 +13,17 @@ export const googleOptions = {
 
     const user = await getUserSession()
 
-    const {
-      sub: googleId,
-      email,
-      picture,
-      given_name,
-      family_name
-    } = profile
+    const { sub: googleId, email, picture, given_name, family_name } = profile
     if (!user) {
       try {
         const { data: userData } = await auth.sso.loginUser({
-          googleId
+          email
         })
 
         if (userData) {
+          console.log(`esse é o user data: ${JSON.stringify(userData)}`)
           return {
-            ...userData,
-            profile_picture: picture,
-            id: googleId
+            ...userData
           }
         }
 
@@ -47,9 +40,7 @@ export const googleOptions = {
 
         if (createdUserData) {
           return {
-            ...createdUserData,
-            profile_picture: picture,
-            id: googleId
+            ...createdUserData
           }
         }
       } catch (error) {

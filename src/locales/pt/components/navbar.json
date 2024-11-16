@@ -9,6 +9,15 @@
     "signup": {
       "label": "Criar Conta",
       "href": "/pt/cadastro"
+    },
+    "createPostForm": {
+      "content": {
+        "placeholder": "Digite o conteúdo da sua publicação aqui"
+      },
+      "location": "Adicionar localização",
+      "collaborators": "Participantes",
+      "configurations": "Configurações adicionais",
+      "publish": "Publicar"
     }
   }
 }

@@ -10,18 +10,24 @@ import { SecondStep } from './SecondStep'
 import { ThirdStep } from './ThirdStep'
 import { CreatePostProps } from './types'
 
-export const CreatePost: React.FC<CreatePostProps> = ({ userData, copy }) => {
+export const CreatePost: React.FC<CreatePostProps> = ({
+  userData,
+  copy,
+  locale
+}) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [imageUrl, setImageUrl] = useState<string>('')
 
-  const STEPS = [
+  const MODAL_STEPS = [
     <FirstStep
       key="first-step"
       setCurrentStep={setCurrentStep}
       setImageUrl={setImageUrl}
     />,
     <SecondStep
+      copy={copy}
+      locale={locale}
       imageUrl={imageUrl}
       key="second-step"
       setCurrentStep={setCurrentStep}
@@ -45,7 +51,7 @@ export const CreatePost: React.FC<CreatePostProps> = ({ userData, copy }) => {
         setIsOpen={setIsModalOpen}
         onlyMobileFullScreen
       >
-        {STEPS[currentStep]}
+        {MODAL_STEPS[currentStep]}
       </Modal>
     </>
   ) : null

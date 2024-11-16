@@ -3,7 +3,7 @@ import { AxiosInstance } from 'axios'
 import { User } from '@/types/models/user'
 import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 
-import { CreateUserData, LoginLinkedinUserData } from './types'
+import { CreateUserData, LoginUserData } from './types'
 
 export class Sso {
   private instance: AxiosInstance
@@ -35,11 +35,11 @@ export class Sso {
   }
 
   loginUser = async (
-    payload: LoginLinkedinUserData
+    payload: LoginUserData
   ): Promise<ServiceRequestResponse<User>> => {
     try {
       const { data, status } = await this.instance.get(
-        `/users/get-user-by-google-id/${payload.googleId}`
+        `/users/get-user-by-email/${payload.email}`
       )
 
       if (status !== 200) {

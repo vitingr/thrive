@@ -15,6 +15,6 @@ export interface CreateUserData
   profilePicture?: string
 }
 
-export interface LoginLinkedinUserData {
-  googleId?: string
+export interface LoginUserData {
+  email?: string
 }

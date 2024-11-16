@@ -9,6 +9,15 @@
     "signup": {
       "label": "Create Account",
       "href": "/en/cadastro"
+    },
+    "createPostForm": {
+      "content": {
+        "placeholder": "Enter the content of your post here"
+      },
+      "location": "Add location",
+      "collaborators": "Participants",
+      "configurations": "Additional settings",
+      "publish": "Publish"
     }
   }
 }
