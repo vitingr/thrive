@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="pt-8">
+      <main>
         <Feed />
       </main>
       <Footer />

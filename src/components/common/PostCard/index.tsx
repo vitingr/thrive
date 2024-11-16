@@ -4,10 +4,6 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { PostCardProps } from './types'
 
 import { RiUserUnfollowLine } from 'react-icons/ri'
-import { OutlineHeart } from './icons/OutlineHeart'
-import { Comment } from './icons/Comment'
-import { Share } from './icons/Share'
-import { OutlineFavourite } from './icons/OutlineFavourite'
 
 import {
   DropdownMenu,
@@ -23,6 +19,7 @@ import {
   GoMoveToEnd,
   GoProjectRoadmap
 } from 'react-icons/go'
+import { PostActions } from './PostActions'
 
 export const PostCard: React.FC<PostCardProps> = () => {
   return (
@@ -117,16 +114,7 @@ export const PostCard: React.FC<PostCardProps> = () => {
           width={6000}
         />
       </figure>
-      <div className="flex w-full justify-between gap-8 px-4">
-        <figure className="flex items-center gap-4 lg:gap-5">
-          <OutlineHeart className="h-4 w-4 cursor-pointer text-slate-600 transition-all duration-300 hover:text-blue-500 lg:h-5 lg:w-5" />
-          <Comment className="h-4 w-4 cursor-pointer text-slate-600 transition-all duration-300 hover:text-blue-500 lg:h-5 lg:w-5" />
-          <Share className="h-4 w-4 cursor-pointer text-slate-600 transition-all duration-300 hover:text-blue-500 lg:h-5 lg:w-5" />
-        </figure>
-        <figure className="flex items-center">
-          <OutlineFavourite className="h-4 w-4 cursor-pointer text-slate-600 transition-all duration-300 hover:text-blue-500 lg:h-5 lg:w-5" />
-        </figure>
-      </div>
+      <PostActions />
     </article>
   )
 }

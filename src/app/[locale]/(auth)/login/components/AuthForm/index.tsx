@@ -58,6 +58,10 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
       if (response?.error) {
         throw new Error(response.error)
       }
+
+      if (response.ok) {
+        router.push("/")
+      }
     } catch (loginUserErr) {
       console.error({ message: loginUserErr })
     } finally {
