@@ -16,11 +16,11 @@ export const googleOptions = {
     const { sub: googleId, email, picture, given_name, family_name } = profile
     if (!user) {
       try {
-        const { data: userData } = await auth.sso.loginUser({
+        const { data: userData, error } = await auth.sso.loginUser({
           email
         })
 
-        if (userData) {
+        if (userData && !error) {
           return {
             ...userData
           }
