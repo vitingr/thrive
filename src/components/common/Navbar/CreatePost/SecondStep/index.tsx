@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 import { Button } from '@/components/toolkit/Button'
+import { DEFAULT_MESSAGES_ERRORS } from '@/constants/errors/defaultMessageErrors'
 import { instanceContent } from '@/instances/instanceContent'
 
 import { EmojiIcon } from '../icons/Emoji'
-import { PostContent, SecondStepProps } from './types'
-import { DEFAULT_MESSAGES_ERRORS } from '@/constants/errors/defaultMessageErrors'
 import { AditionalActions } from './AditionalActions'
+import { PostContent, SecondStepProps } from './types'
 
 export const SecondStep: React.FC<SecondStepProps> = ({
   imageUrl,
@@ -60,7 +60,7 @@ export const SecondStep: React.FC<SecondStepProps> = ({
       await instanceContent.posts.createPost({
         userId: userData.id,
         postContent,
-        locale: locale
+        locale
       })
 
       setCurrentStep(2)

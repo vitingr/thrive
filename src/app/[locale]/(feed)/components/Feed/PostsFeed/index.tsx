@@ -1,9 +1,10 @@
-import { PostCard } from '@/components/common/PostCard'
+import { getLocale } from 'next-intl/server'
 
-import { PostFeedProps } from './types'
+import { PostCard } from '@/components/common/PostCard'
 import { instanceContent } from '@/instances/instanceContent'
 import { getUserSession } from '@/utils/auth/getUserSession'
-import { getLocale } from 'next-intl/server'
+
+import { PostFeedProps } from './types'
 
 export const PostFeed: React.FC<PostFeedProps> = async () => {
   const user = await getUserSession()

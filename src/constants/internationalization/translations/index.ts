@@ -1,5 +1,5 @@
-
 import { getDictionaryPath } from '@/utils/internationalization/getDictionaryPaths'
+
 import { components } from './components'
 import { pages } from './pages'
 

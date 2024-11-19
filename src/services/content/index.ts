@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from 'axios'
 
+import { Friends } from './friends'
 import { Groups } from './groups'
 import { Posts } from './posts'
-import { Friends } from './friends'
 
 export class Content {
   private instance: AxiosInstance

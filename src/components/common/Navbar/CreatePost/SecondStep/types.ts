@@ -1,15 +1,15 @@
 import { SetStateAction } from 'react'
 
+import { Messages } from '@/constants/internationalization/messages'
 import { PostType } from '@/types/models/post'
 import { User } from '@/types/models/user'
-import { Messages } from '@/constants/internationalization/messages'
 
 export interface SecondStepProps {
+  copy: Messages['navbar']['content']
   imageUrl: string
   locale: string
   setCurrentStep: React.Dispatch<SetStateAction<number>>
   userData: User
-  copy: Messages['navbar']['content']
 }
 
 export interface PostContent {

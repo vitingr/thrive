@@ -1,4 +1,4 @@
 export const components = {
-  "navbar": "navbar",
-  "sidebar": "sidebar"
+  navbar: 'navbar',
+  sidebar: 'sidebar'
 }

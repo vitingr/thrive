@@ -1,8 +1,12 @@
 import Image from 'next/image'
+import {
+  GoLink,
+  GoMoveToEnd,
+  GoPerson,
+  GoProjectRoadmap,
+  GoReport
+} from 'react-icons/go'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
-
-import { PostCardProps } from './types'
-
 import { RiUserUnfollowLine } from 'react-icons/ri'
 
 import {
@@ -11,15 +15,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '../DropdownMenu'
-
-import {
-  GoReport,
-  GoLink,
-  GoPerson,
-  GoMoveToEnd,
-  GoProjectRoadmap
-} from 'react-icons/go'
 import { PostActions } from './PostActions'
+import { PostCardProps } from './types'
 
 export const PostCard: React.FC<PostCardProps> = () => {
   return (

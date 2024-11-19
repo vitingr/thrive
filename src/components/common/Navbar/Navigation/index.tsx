@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import { Anchor } from '@/components/toolkit/Anchor'
+
 import { NavigationProps } from './types'
 
 export const Navigation: React.FC<NavigationProps> = ({ copy }) => {

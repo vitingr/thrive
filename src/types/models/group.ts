@@ -1,12 +1,12 @@
 export interface Group {
-  id: number
-  name: string
+  background_picture: string
   description: string
   favourite_activity: string
-  group_picture: string
-  background_picture: string
-  is_private: boolean
   followers: number
-  members: number
+  group_picture: string
+  id: number
+  is_private: boolean
   locale: string
+  members: number
+  name: string
 }

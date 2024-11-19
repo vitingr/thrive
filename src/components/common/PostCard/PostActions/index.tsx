@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+
 import { Comment } from '../icons/Comment'
+import { FillFavourite } from '../icons/FillFavourite'
+import { FillHeart } from '../icons/FillHeart'
 import { OutlineFavourite } from '../icons/OutlineFavourite'
 import { OutlineHeart } from '../icons/OutlineHeart'
 import { Share } from '../icons/Share'
-import { FillHeart } from '../icons/FillHeart'
-import { FillFavourite } from '../icons/FillFavourite'
 
 export const PostActions: React.FC = () => {
   const [likedPost, setLikedPost] = useState<boolean>(false)

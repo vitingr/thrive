@@ -1,11 +1,11 @@
-import { User } from "@/types/models/user"
+import { User } from '@/types/models/user'
 
 export interface GetUserFriendsData {
   user: User
 }
 
 export interface GetSuggestFriendsData {
-  payload: Pick<User, "id">
+  payload: Pick<User, 'id'>
 }
 
 export interface FollowUserData {

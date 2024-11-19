@@ -1,7 +1,8 @@
 'use client'
 
-import { User } from '@/types/models/user'
 import { SessionContextValue, useSession } from 'next-auth/react'
+
+import { User } from '@/types/models/user'
 
 export const useUserSession = (): {
   user?: User

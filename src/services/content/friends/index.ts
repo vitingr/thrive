@@ -1,7 +1,14 @@
-import { AxiosInstance } from "axios"
-import { FollowUserData, GetSuggestFriendsData, GetUserFriendsData, UnfollowUserData } from "./types"
-import { ServiceRequestResponse } from "@/types/services/serviceRequestResponse"
-import { User } from "@/types/models/user"
+import { AxiosInstance } from 'axios'
+
+import { User } from '@/types/models/user'
+import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
+
+import {
+  FollowUserData,
+  GetSuggestFriendsData,
+  GetUserFriendsData,
+  UnfollowUserData
+} from './types'
 
 export class Friends {
   private instance: AxiosInstance
@@ -14,7 +21,9 @@ export class Friends {
     user
   }: GetUserFriendsData): Promise<ServiceRequestResponse<User[]>> => {
     try {
-      const { data, status } = await this.instance.post(`/frieds/get-user-friends/${user.id}`)
+      const { data, status } = await this.instance.post(
+        `/frieds/get-user-friends/${user.id}`
+      )
 
       if (status !== 200) {
         throw new Error(data.message)
@@ -36,7 +45,10 @@ export class Friends {
     payload
   }: GetSuggestFriendsData): Promise<ServiceRequestResponse<User[]>> => {
     try {
-      const { data, status } = await this.instance.post(`/frieds/get-suggested-friends`, payload)
+      const { data, status } = await this.instance.post(
+        `/frieds/get-suggested-friends`,
+        payload
+      )
 
       if (status !== 200) {
         throw new Error(data.message)
@@ -75,7 +87,6 @@ export class Friends {
   }: UnfollowUserData): Promise<ServiceRequestResponse<void>> => {
     try {
       await this.instance.post(`/frieds/unfollow-user`, payload)
-
     } catch (unfollowUserErr) {
       console.error({
         unfollowUserMessage: unfollowUserErr.message

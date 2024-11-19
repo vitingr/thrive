@@ -1,13 +1,13 @@
-import { Group } from "@/types/models/group";
-import { User } from "@/types/models/user";
+import { Group } from '@/types/models/group'
+import { User } from '@/types/models/user'
 
 export interface GetAllGroupsData {
   user: User
 }
 
 export interface GetGroupsByLanguageData {
-  user: User
   locale: string
+  user: User
 }
 
 export interface FollowGroupData {

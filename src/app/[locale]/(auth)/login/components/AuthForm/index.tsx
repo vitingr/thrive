@@ -1,18 +1,20 @@
 'use client'
 
-import { Button } from '@/components/toolkit/Button'
-import { AuthFormProps, isLoadingSubmitProps, LoginInputs } from './types'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import { signIn } from 'next-auth/react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { loginSchema } from './schemas'
-import { auth } from '@/instances/instanceAuth'
 import { toast } from 'react-toastify'
+
+import { Button } from '@/components/toolkit/Button'
 import useRefreshRoute from '@/hooks/useRefreshRoute'
 import { useUserSession } from '@/hooks/useUserSession'
-import { useRouter } from 'next/navigation'
+import { auth } from '@/instances/instanceAuth'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import { loginSchema } from './schemas'
+import { AuthFormProps, LoginInputs, isLoadingSubmitProps } from './types'
 
 export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
   const router = useRouter()
@@ -22,7 +24,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValidating }
+    formState: { errors }
   } = useForm({
     resolver: zodResolver(loginSchema({ locale }))
   })
@@ -60,7 +62,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
       }
 
       if (response.ok) {
-        router.push("/")
+        router.push('/')
       }
     } catch (loginUserErr) {
       console.error({ message: loginUserErr })
@@ -102,32 +104,32 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
       <section className="flex w-full flex-col gap-4">
         <input
           className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
-          type="text"
-          id='email'
-          minLength={8}
+          id="email"
           maxLength={80}
-          spellCheck={false}
+          minLength={8}
           placeholder={copy.email.placeholder}
+          spellCheck={false}
+          type="text"
           {...register('email')}
           required
         />
         {errors.email && <span>{errors.root.message}</span>}
         <input
           className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
-          type="password"
           id="password"
-          minLength={8}
           maxLength={40}
-          spellCheck={false}
+          minLength={8}
           placeholder={copy.password.placeholder}
+          spellCheck={false}
+          type="password"
           {...register('password')}
           required
         />
         {errors.password && <span>{errors.root.message}</span>}
         <Button
-          type="submit"
-          isLoading={isLoadingSubmit.email}
           className="min-w-full rounded-md md:text-sm"
+          isLoading={isLoadingSubmit.email}
+          type="submit"
         >
           {copy.button.label}
         </Button>
@@ -139,16 +141,16 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
       </div>
       <Button
         className="flex w-full cursor-pointer items-center gap-2 rounded-md border border-slate-200 px-2 py-1.5 transition-all duration-300 hover:bg-slate-50"
-        variant="custom"
         onClick={() => handleSignInWithGoogle()}
+        variant="custom"
       >
         <figure className="w-8">
           <Image
-            className="w-8"
-            width={512}
-            height={512}
             alt="Google Logo"
+            className="w-8"
+            height={512}
             src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+            width={512}
           />
         </figure>
         <p className="text-sm text-slate-500">{copy.loginWithGoogle}</p>

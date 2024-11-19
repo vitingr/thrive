@@ -1,5 +1,7 @@
-import { DEFAULT_MESSAGES_ERRORS } from '@/constants/errors/defaultMessageErrors'
 import z from 'zod'
+
+import { DEFAULT_MESSAGES_ERRORS } from '@/constants/errors/defaultMessageErrors'
+
 import { LoginSchemaData } from './types'
 
 export const loginSchema = ({ locale }: LoginSchemaData) =>

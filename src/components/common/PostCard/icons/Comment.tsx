@@ -3,10 +3,10 @@ import { IconProps } from '@/types/components/icons'
 export const Comment: React.FC<IconProps> = props => {
   return (
     <svg
-      width="23"
+      fill="none"
       height="22"
       viewBox="0 0 23 22"
-      fill="none"
+      width="23"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

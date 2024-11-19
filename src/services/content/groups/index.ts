@@ -1,7 +1,15 @@
+import { AxiosInstance } from 'axios'
+
 import { User } from '@/types/models/user'
 import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
-import { AxiosInstance } from 'axios'
-import { CreateGroupData, FollowGroupData, GetAllGroupsData, GetGroupsByLanguageData, UnfollowGroupData } from './types'
+
+import {
+  CreateGroupData,
+  FollowGroupData,
+  GetAllGroupsData,
+  GetGroupsByLanguageData,
+  UnfollowGroupData
+} from './types'
 
 export class Groups {
   private instance: AxiosInstance
@@ -34,10 +42,7 @@ export class Groups {
     }
   }
 
-  getGroupsByLanguage = async ({
-    user,
-    locale
-  }: GetGroupsByLanguageData) => {
+  getGroupsByLanguage = async ({ user, locale }: GetGroupsByLanguageData) => {
     try {
       const { data, status } = await this.instance.post(
         `/groups/get-groups-by-language/${user.id}/${locale}`
@@ -64,7 +69,6 @@ export class Groups {
   }: FollowGroupData): Promise<ServiceRequestResponse<void>> => {
     try {
       await this.instance.post(`/groups/follow-group`, payload)
-
     } catch (followGroupErr) {
       console.error({
         unfollowGroupMessage: followGroupErr.message
@@ -81,7 +85,6 @@ export class Groups {
   }: UnfollowGroupData): Promise<ServiceRequestResponse<void>> => {
     try {
       await this.instance.post(`/groups/unfollow-group`, payload)
-
     } catch (unfollowGroupErr) {
       console.error({
         unfollowGroupMessage: unfollowGroupErr.message
@@ -98,7 +101,6 @@ export class Groups {
   }: CreateGroupData): Promise<ServiceRequestResponse<void>> => {
     try {
       await this.instance.post(`/groups/create-group`, payload)
-
     } catch (createGroupErr) {
       console.error({
         createGroupMessage: createGroupErr.message
@@ -115,7 +117,6 @@ export class Groups {
   }: CreateGroupData): Promise<ServiceRequestResponse<void>> => {
     try {
       await this.instance.post(`/groups/delete-group`, payload)
-
     } catch (deleteGroupErr) {
       console.error({
         deleteGroupMessage: deleteGroupErr.message

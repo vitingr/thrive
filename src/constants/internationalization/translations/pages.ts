@@ -1,3 +1,3 @@
 export const pages = {
-  "auth": "auth"
+  auth: 'auth'
 }

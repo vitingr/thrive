@@ -2,9 +2,9 @@
 
 import { getTranslations } from 'next-intl/server'
 
+import { Messages } from '@/constants/internationalization/messages'
 
 import { TranslationReturn } from './types'
-import { Messages } from '@/constants/internationalization/messages'
 
 export const translation = async <Dictionary extends keyof Messages>(
   dictionary: Dictionary

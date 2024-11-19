@@ -1,17 +1,17 @@
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 
 import { CircleButton } from '@/components/common/CircleButton'
 
 import { PEOPLE_YOU_MIGHT_KNOW } from './data'
-import { getTranslations } from 'next-intl/server'
 
 export const PeopleYouMightKnow: React.FC = async () => {
-  const t = await getTranslations("sidebar")
+  const t = await getTranslations('sidebar')
 
   return (
     <article className="flex w-full flex-col gap-4 rounded-md bg-white p-4">
       <h2 className="font-semibold lg:text-xl">
-        {t("content.peopleYouMightKnow.title")}
+        {t('content.peopleYouMightKnow.title')}
       </h2>
       <ul className="flex flex-col divide-y divide-slate-200">
         {PEOPLE_YOU_MIGHT_KNOW.map((user, index: number) => (
@@ -31,7 +31,7 @@ export const PeopleYouMightKnow: React.FC = async () => {
             <div className="flex w-full flex-col">
               <p>{user.name}</p>
               <p className="line-clamp-1 text-sm text-slate-500">
-                {t("content.followedBy")}{' '}
+                {t('content.followedBy')}{' '}
                 {user.followed_by.map((user, index: number) => (
                   <span
                     className="text-sm text-slate-500"
@@ -45,7 +45,7 @@ export const PeopleYouMightKnow: React.FC = async () => {
           </li>
         ))}
       </ul>
-      <CircleButton label={t("content.seeMore")} />
+      <CircleButton label={t('content.seeMore')} />
     </article>
   )
 }

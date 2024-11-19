@@ -1,8 +1,10 @@
+import { NextPage } from 'next'
+
 import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { getMetaData } from '@/utils/getters/getMetaData'
-import { NextPage } from 'next'
-import { AuthForm } from './components/AuthForm'
 import { translation } from '@/utils/internationalization/translation'
+
+import { AuthForm } from './components/AuthForm'
 import { CreateAccount } from './components/CreateAccount'
 
 export async function generateMetadata() {
@@ -18,7 +20,7 @@ const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
   const { raw } = await translation('auth')
 
   return (
-    <main className="flex h-screen w-screen flex-col items-center gap-4 justify-center bg-slate-100">
+    <main className="flex h-screen w-screen flex-col items-center justify-center gap-4 bg-slate-100">
       <AuthForm copy={raw('form')} locale={locale} />
       <CreateAccount copy={raw('form')} />
     </main>

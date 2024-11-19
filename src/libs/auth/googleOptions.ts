@@ -1,8 +1,9 @@
+import { cookies } from 'next/headers'
+
 import { auth } from '@/instances/instanceAuth'
 import { generateDefaultUsername } from '@/utils/auth/generateDefaultUsername'
 import { getUserFirstName } from '@/utils/auth/getUserFirstName'
 import { getUserSession } from '@/utils/auth/getUserSession'
-import { cookies } from 'next/headers'
 
 export const googleOptions = {
   clientId: process.env.GOOGLE_CLIENT_ID,
@@ -33,7 +34,7 @@ export const googleOptions = {
           profile_picture: picture,
           background_picture: 'blank',
           google_id: googleId,
-          locale: locale,
+          locale,
           username: generateDefaultUsername(getUserFirstName(email))
         })
 

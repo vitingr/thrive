@@ -1,8 +1,10 @@
+import { NextPage } from 'next'
+
 import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { getMetaData } from '@/utils/getters/getMetaData'
-import { NextPage } from 'next'
-import { AuthForm } from './components/AuthForm'
 import { translation } from '@/utils/internationalization/translation'
+
+import { AuthForm } from './components/AuthForm'
 import { LogginWithAccount } from './components/LogginWithAccount'
 
 export async function generateMetadata() {

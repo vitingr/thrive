@@ -27,9 +27,9 @@ export const CreatePost: React.FC<CreatePostProps> = ({
     />,
     <SecondStep
       copy={copy}
-      locale={locale}
       imageUrl={imageUrl}
       key="second-step"
+      locale={locale}
       setCurrentStep={setCurrentStep}
       userData={userData}
     />,

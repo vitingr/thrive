@@ -1,5 +1,6 @@
 import { AxiosInstance } from 'axios'
 
+import { User } from '@/types/models/user'
 import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 
 import {
@@ -8,7 +9,6 @@ import {
   LoginUserData,
   LoginUserReturn
 } from './types'
-import { User } from '@/types/models/user'
 
 export class Users {
   private instance: AxiosInstance

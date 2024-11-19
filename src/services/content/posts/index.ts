@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios'
 
-import { createPostData, GetPostsByLanguageData } from './types'
-
-import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 import { Post } from '@/types/models/post'
+import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
+
+import { GetPostsByLanguageData, createPostData } from './types'
 
 export class Posts {
   private instance: AxiosInstance

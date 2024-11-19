@@ -1,12 +1,12 @@
-import { IconProps } from "@/types/components/icons";
+import { IconProps } from '@/types/components/icons'
 
 export const FillFavourite: React.FC<IconProps> = props => {
   return (
     <svg
-      width="17"
+      fill="none"
       height="22"
       viewBox="0 0 17 22"
-      fill="none"
+      width="17"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

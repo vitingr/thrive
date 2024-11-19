@@ -1,21 +1,23 @@
-import { CircleButton } from '@/components/common/CircleButton'
-
-import { TRENDING_TOPICS } from './data'
-import { TrendingProps } from './types'
 import { getTranslations } from 'next-intl/server'
+
+import { CircleButton } from '@/components/common/CircleButton'
 import { rawTranslation } from '@/utils/internationalization/rawTranslation'
 
+import { TrendingProps } from './types'
+
 export const Treding: React.FC<TrendingProps> = async () => {
-  const t = await getTranslations("sidebar")
-  const {trending} = rawTranslation({
+  const t = await getTranslations('sidebar')
+  const { trending } = rawTranslation({
     t,
-    namespace: "sidebar",
-    key: "content"
+    namespace: 'sidebar',
+    key: 'content'
   })
 
   return (
     <article className="flex w-full flex-col gap-4 rounded-md bg-white p-4">
-      <h2 className="font-semibold lg:text-xl">{t("content.trending.title")}</h2>
+      <h2 className="font-semibold lg:text-xl">
+        {t('content.trending.title')}
+      </h2>
       <ul className="flex flex-col divide-y divide-slate-200">
         {trending.defaultPosts.map((topic, index: number) => (
           <li
@@ -27,7 +29,7 @@ export const Treding: React.FC<TrendingProps> = async () => {
           </li>
         ))}
       </ul>
-      <CircleButton label={t("content.seeMore")} />
+      <CircleButton label={t('content.seeMore')} />
     </article>
   )
 }

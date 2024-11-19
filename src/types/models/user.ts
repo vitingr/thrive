@@ -6,7 +6,7 @@ export interface User {
   follwing: number
   id: number
   lastname: string
+  locale: string
   profile_picture: string
   username: string
-  locale: string
 }
