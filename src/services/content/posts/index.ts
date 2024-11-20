@@ -6,6 +6,7 @@ import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 import {
   DeslikePostData,
   GetPostsByLanguageData,
+  GetPostsByLanguageResponse,
   LikePostData,
   createPostData
 } from './types'
@@ -52,17 +53,30 @@ export class Posts {
   getPostsByLanguage = async ({
     userId,
     locale
-  }: GetPostsByLanguageData): Promise<ServiceRequestResponse<Post[]>> => {
+  }: GetPostsByLanguageData): Promise<
+    ServiceRequestResponse<GetPostsByLanguageResponse>
+  > => {
     try {
-      const { data, status } = await this.instance.get(
-        `/posts/get-posts-by-language/${userId}/${locale}`
+      const response = await fetch(
+        `http://localhost:8080/posts/get-posts-by-language/${userId}/${locale}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          next: {
+            revalidate: 5 * 60
+          }
+        }
       )
 
-      if (status !== 200) {
-        throw new Error(data.message)
+      if (!response.ok) {
+        throw new Error(`Error fetching posts: ${response.statusText}`)
       }
 
-      return data
+      const data = await response.json()
+
+      return { data }
     } catch (getPostsByLanguageError) {
       console.error({
         getPostsByLanguageErrorMessage: getPostsByLanguageError.message

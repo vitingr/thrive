@@ -34,13 +34,20 @@ export const googleOptions = {
           profile_picture: picture,
           background_picture: 'blank',
           google_id: googleId,
-          locale,
+          locale, 
           username: generateDefaultUsername(getUserFirstName(email))
         })
 
         if (createdUserData) {
-          return {
-            ...createdUserData
+          const { data: loginData, error: loginError } =
+            await auth.sso.loginUser({
+              email
+            })
+
+          if (loginData && !loginError) {
+            return {
+              ...loginData
+            }
           }
         }
       } catch (error) {

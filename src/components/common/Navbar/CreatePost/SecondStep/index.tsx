@@ -14,10 +14,11 @@ import { PostContent, SecondStepProps } from './types'
 
 export const SecondStep: React.FC<SecondStepProps> = ({
   imageUrl,
-  setCurrentStep,
+  setIsModalOpen,
   userData,
   locale,
-  copy
+  copy,
+  setImageUrl
 }) => {
   const [contentLength, setContentLength] = useState<number>(0)
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -63,7 +64,9 @@ export const SecondStep: React.FC<SecondStepProps> = ({
         locale
       })
 
-      setCurrentStep(2)
+      setIsModalOpen(false)
+      setImageUrl('')
+      toast.success('A publicação foi criada com sucesso!')
     } catch (createPostError) {
       console.error(
         `ERROR! An error occurred while tried to create the post: ${createPostError}`

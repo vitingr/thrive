@@ -25,3 +25,7 @@ export interface DeslikePostData {
     post: Post
   }
 }
+
+export interface GetPostsByLanguageResponse {
+  data: Post[]
+}

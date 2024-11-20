@@ -8,7 +8,6 @@ export const Sidebar: React.FC<SidebarProps> = () => {
       <div className="flex max-h-[420px] w-full max-w-xs flex-col gap-8">
         <PeopleYouMightKnow />
         <Treding />
-        <Treding />
       </div>
     </aside>
   )

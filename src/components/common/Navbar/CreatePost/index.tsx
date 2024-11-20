@@ -7,7 +7,6 @@ import { Modal } from '@/components/toolkit/Modal'
 
 import { FirstStep } from './FirstStep'
 import { SecondStep } from './SecondStep'
-import { ThirdStep } from './ThirdStep'
 import { CreatePostProps } from './types'
 
 export const CreatePost: React.FC<CreatePostProps> = ({
@@ -30,10 +29,10 @@ export const CreatePost: React.FC<CreatePostProps> = ({
       imageUrl={imageUrl}
       key="second-step"
       locale={locale}
-      setCurrentStep={setCurrentStep}
+      setIsModalOpen={setIsModalOpen}
       userData={userData}
-    />,
-    <ThirdStep key="third-step" setCurrentStep={setCurrentStep} />
+      setImageUrl={setImageUrl}
+    />
   ]
 
   return userData ? (

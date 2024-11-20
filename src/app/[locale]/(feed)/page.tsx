@@ -3,6 +3,8 @@ import { Navbar } from '@/components/common/Navbar'
 import { getMetaData } from '@/utils/getters/getMetaData'
 
 import { Feed } from './components/Feed'
+import { NextPage } from 'next'
+import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -13,7 +15,11 @@ export async function generateMetadata() {
   })
 }
 
-export default function Home() {
+const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
+  // # TODO
+  // Adicionar novo modal futuramente convidando usuário a se cadastrar na plataforma caso não esteja
+  // Ai se quiser criar conta redirecionar para /login
+
   return (
     <>
       <Navbar />
@@ -24,3 +30,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Page
