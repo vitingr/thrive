@@ -33,7 +33,7 @@ jobs:
           docker build -t ci -f Dockerfile .
 
       - name: Post NextJS Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
 
       - name: Authorization
         run: |
