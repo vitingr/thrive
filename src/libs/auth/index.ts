@@ -10,6 +10,7 @@ import { googleOptions } from './googleOptions'
 export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider(credentialsOptions),
+    // @ts-expect-error
     GoogleProvider(googleOptions)
   ],
   callbacks: {
