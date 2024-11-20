@@ -22,7 +22,7 @@ export class Friends {
   }: GetUserFriendsData): Promise<ServiceRequestResponse<User[]>> => {
     try {
       const { data, status } = await this.instance.post(
-        `/frieds/get-user-friends/${user.id}`
+        `/get-user-friends/${user.id}`
       )
 
       if (status !== 200) {
@@ -46,7 +46,7 @@ export class Friends {
   }: GetSuggestFriendsData): Promise<ServiceRequestResponse<User[]>> => {
     try {
       const { data, status } = await this.instance.post(
-        `/frieds/get-suggested-friends`,
+        `/get-suggested-friends`,
         payload
       )
 

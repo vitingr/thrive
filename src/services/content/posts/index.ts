@@ -3,7 +3,12 @@ import { AxiosInstance } from 'axios'
 import { Post } from '@/types/models/post'
 import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 
-import { GetPostsByLanguageData, createPostData } from './types'
+import {
+  DeslikePostData,
+  GetPostsByLanguageData,
+  LikePostData,
+  createPostData
+} from './types'
 
 export class Posts {
   private instance: AxiosInstance
@@ -50,7 +55,7 @@ export class Posts {
   }: GetPostsByLanguageData): Promise<ServiceRequestResponse<Post[]>> => {
     try {
       const { data, status } = await this.instance.get(
-        `/get-posts-by-language/${userId}/${locale}`
+        `/posts/get-posts-by-language/${userId}/${locale}`
       )
 
       if (status !== 200) {
@@ -65,6 +70,54 @@ export class Posts {
 
       return {
         error: getPostsByLanguageError.message
+      }
+    }
+  }
+
+  likePost = async ({
+    payload
+  }: LikePostData): Promise<ServiceRequestResponse<void>> => {
+    try {
+      const { data, status } = await this.instance.post(`/posts/like-post`, {
+        payload
+      })
+
+      if (status !== 200) {
+        throw new Error(data.message)
+      }
+
+      return
+    } catch (likePostError) {
+      console.error({
+        likePostErrorMessage: likePostError.message
+      })
+
+      return {
+        error: likePostError.message
+      }
+    }
+  }
+
+  deslikePost = async ({
+    payload
+  }: DeslikePostData): Promise<ServiceRequestResponse<void>> => {
+    try {
+      const { data, status } = await this.instance.post(`/posts/deslike-post`, {
+        payload
+      })
+
+      if (status !== 200) {
+        throw new Error(data.message)
+      }
+
+      return
+    } catch (deslikePostError) {
+      console.error({
+        deslikePostErrorMessage: deslikePostError.message
+      })
+
+      return {
+        error: deslikePostError.message
       }
     }
   }
