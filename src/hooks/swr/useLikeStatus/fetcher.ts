@@ -6,7 +6,12 @@ export const fetcher = async ([
   _,
   payload
 ]: swrHookFetcherParams<UseLikeStatusData>) => {
-  const { data } = await instanceContent.posts.likePost({ payload })
+  const { data } = await instanceContent.posts.getPostById({
+    post: payload.post
+  })
 
-  return data
+  return {
+    number_likes: data.number_likes,
+    user_liked: data.user_liked || false
+  }
 }

@@ -40,6 +40,9 @@ export const authOptions: AuthOptions = {
       session.user = userData
 
       return Promise.resolve(session)
+    },
+    redirect: async ({ url, baseUrl }) => {
+      return url
     }
   },
   pages: {

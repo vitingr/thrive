@@ -3,8 +3,11 @@ import Image from 'next/image'
 import { PostActions } from './PostActions'
 import { PostCardProps } from './types'
 import { PostDropdown } from './PostDropdown'
+import { getUserSession } from '@/utils/auth/getUserSession'
 
-export const PostCard: React.FC<PostCardProps> = ({ post }) => {
+export const PostCard: React.FC<PostCardProps> = async ({ post }) => {
+  const user = await getUserSession()
+
   return (
     <article className="flex flex-col gap-4 rounded-md bg-white py-4 shadow">
       <div className="flex w-full justify-between gap-8 px-4">
@@ -40,7 +43,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
           width={6000}
         />
       </figure>
-      <PostActions />
+      <PostActions post={post} user={user} />
       <p className="w-full px-4 text-sm text-slate-600">{post.number_likes || 0} curtidas</p>
     </article>
   )
