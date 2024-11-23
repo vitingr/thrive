@@ -1,3 +1,4 @@
 export const pages = {
-  auth: 'auth'
+  auth: 'auth',
+  profile: 'pages/profile'
 }

@@ -1,0 +1,16 @@
+{
+  "headComponent": {
+    "title": "Thrive",
+    "description": "Encontre e participe de grupos com pessoas com objetivos saudáveis iguais ao seu na nossa plataforma",
+    "opengraph": ""
+  },
+  "heroProfile": {
+    "navigation": [
+      "Minha atividade",
+      "Analytics",
+      "Minhas Amizades",
+      "Salvos",
+      "Configurações"
+    ]
+  }
+}

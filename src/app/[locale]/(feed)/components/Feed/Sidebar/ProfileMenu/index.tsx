@@ -1,9 +1,18 @@
 import { getUserSession } from '@/utils/auth/getUserSession'
 import Image from 'next/image'
 import { SavedItems } from './icons/SavedItems'
+import { getTranslations } from 'next-intl/server'
+import { rawTranslation } from '@/utils/internationalization/rawTranslation'
 
 export const ProfileMenu: React.FC = async () => {
   const user = await getUserSession()
+
+  const t = await getTranslations('user-sidebar')
+  const { secondColumn } = rawTranslation({
+    t,
+    namespace: 'user-sidebar',
+    key: 'list'
+  })
 
   return (
     <aside className="inset-0 top-28 hidden h-full w-full max-w-[230px] lg:sticky lg:flex">
@@ -28,7 +37,7 @@ export const ProfileMenu: React.FC = async () => {
               alt={user.username}
               width={400}
               height={400}
-              className="mx-auto -mt-6 h-12 w-12 rounded-full"
+              className="mx-auto -mt-6 h-12 w-12 cursor-pointer rounded-full transition-all duration-300 hover:brightness-125"
             />
           </figure>
           <article className="flex w-full flex-col divide-y divide-slate-200 lg:pb-6">
@@ -40,31 +49,32 @@ export const ProfileMenu: React.FC = async () => {
             </div>
             <div className="flex w-full flex-col py-3">
               <span className="flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-1 transition-all duration-default hover:bg-neutral-100">
-                <p className="w-full text-sm text-slate-600">Minhas amizades</p>
+                <p className="w-full text-sm text-slate-600">
+                  {t('list.firstColumn.friends')}
+                </p>
                 <p className="text-sm font-medium text-blue-500">
                   {user.followers || 0}
                 </p>
               </span>
               <p className="w-full cursor-pointer px-4 py-1 text-sm text-slate-600 transition-all duration-default hover:bg-neutral-100">
-                Ver todos analytics
+                {t('list.firstColumn.analytics')}
               </p>
             </div>
             <div className="flex w-full flex-col py-3">
-              <p className="w-full cursor-pointer px-4 py-1 text-sm text-slate-600 transition-all duration-default hover:bg-neutral-100">
-                Grupos
-              </p>
-              <p className="w-full cursor-pointer px-4 py-1 text-sm text-slate-600 transition-all duration-default hover:bg-neutral-100">
-                Eventos
-              </p>
-              <p className="w-full cursor-pointer px-4 py-1 text-sm text-slate-600 transition-all duration-default hover:bg-neutral-100">
-                Hashtags que sigo
-              </p>
+              {secondColumn.map((item, index: number) => (
+                <p
+                  className="w-full cursor-pointer px-4 py-1 text-sm text-slate-600 transition-all duration-default hover:bg-neutral-100"
+                  key={`${item}-${index}`}
+                >
+                  {item.label}
+                </p>
+              ))}
             </div>
-            <div className="flex w-full flex-col py-3">
+            <div className="flex w-full flex-col pt-3">
               <div className="flex w-full cursor-pointer items-center gap-2 px-4 py-1 transition-all duration-default hover:bg-neutral-100">
                 <SavedItems className="h-4 w-4" />
                 <p className="w-full cursor-pointer text-sm text-slate-600 transition-all duration-default hover:bg-neutral-100">
-                  Itens salvos
+                  {t('list.thirdColumn.favourites')}
                 </p>
               </div>
             </div>

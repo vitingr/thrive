@@ -1,0 +1,22 @@
+{
+  "list": {
+    "firstColumn": {
+      "friends": "My friendships",
+      "analytics": "View all analytics"
+    },
+    "secondColumn": [
+      {
+        "label": "Groups"
+      },
+      {
+        "label": "Events"
+      },
+      {
+        "label": "Hashtags I follow"
+      }
+    ],
+    "thirdColumn": {
+      "favourites": "Saved items"
+    }
+  }
+}
