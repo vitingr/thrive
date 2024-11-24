@@ -18,3 +18,5 @@ export const PEOPLE_YOU_MIGHT_KNOW = [
       'https://i.pinimg.com/originals/a1/79/d2/a179d241a0b2d225bba86c377ef74b89.jpg'
   }
 ]
+
+export const FOLLOWERS = ['Marcus López', 'Divanir Bastos', 'André Gomes']

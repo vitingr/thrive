@@ -34,7 +34,7 @@ export class Friends {
       console.error({
         getUserFriendsMessage: getUserFriendsErr.message
       })
-
+ 
       return {
         error: getUserFriendsErr.message
       }
@@ -42,13 +42,12 @@ export class Friends {
   }
 
   getSuggestFriends = async ({
-    payload
+    userId
   }: GetSuggestFriendsData): Promise<ServiceRequestResponse<User[]>> => {
     try {
-      const { data, status } = await this.instance.post(
-        `/get-suggested-friends`,
-        payload
-      )
+      const { data, status } = await this.instance.get(`/users/get-suggest-friends/${userId}`)
+
+      console.log('pegando users amigos')
 
       if (status !== 200) {
         throw new Error(data.message)

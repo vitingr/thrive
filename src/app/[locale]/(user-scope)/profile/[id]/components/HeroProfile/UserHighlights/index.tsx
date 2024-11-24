@@ -1,30 +1,33 @@
 import { OutlineHeart } from '@/components/common/PostCard/icons/OutlineHeart'
+import { Gym } from './icons/Gym'
+import { Shoes } from './icons/Shoes'
+import { Calendar } from './icons/Calendar'
 
 export const UserHighlights: React.FC = async () => {
   return (
     <ul className="flex w-full gap-4">
       <li className="flex cursor-pointer gap-2 rounded-[6px] border border-slate-200 p-2 transition-all duration-300 hover:bg-neutral-50">
-        <OutlineHeart className="mt-1.5 h-5 w-5" />
+        <Calendar className="mt-1.5 h-5 w-5 text-slate-500" />
         <article className="flex flex-col">
           <p className="text-sm lg:text-base">Maratonista</p>
           <p className="text-xs text-slate-400">3 Participações em eventos</p>
         </article>
       </li>
       <li className="flex cursor-pointer gap-2 rounded-[6px] border border-slate-200 p-2 transition-all duration-300 hover:bg-neutral-50">
-        <OutlineHeart className="mt-1.5 h-5 w-5" />
+        <Shoes className="mt-1.5 h-5 w-5 text-slate-500" />
         <article className="flex flex-col">
-          <p className="text-sm lg:text-base">Maratonista</p>
-          <p className="text-xs text-slate-400">3 Participações em eventos</p>
+          <p className="text-sm lg:text-base">Corredor Urbano</p>
+          <p className="text-xs text-slate-400">Praticante de corridas de rua</p>
         </article>
       </li>
       <li
         className="flex gap-2 rounded-[6px] border border-slate-200 p-2 transition-all duration-300 hover:bg-neutral-50"
         cursor-pointer
       >
-        <OutlineHeart className="mt-1.5 h-5 w-5" />
+        <Gym className="mt-1.5 h-5 w-5 text-slate-500" />
         <article className="flex flex-col">
-          <p className="text-sm lg:text-base">Maratonista</p>
-          <p className="text-xs text-slate-400">3 Participações em eventos</p>
+          <p className="text-sm lg:text-base">Academista</p>
+          <p className="text-xs text-slate-400">Frequenta a Academia todos os dias</p>
         </article>
       </li>
     </ul>

@@ -38,7 +38,11 @@ export const UserActions: React.FC<UserActionsProps> = async ({ copy }) => {
           </div>
         ) : (
           <>
-            <figure className="h-full max-h-6 w-full max-w-6 lg:max-h-8 lg:max-w-8">
+            <Anchor
+              className="h-full max-h-6 w-full max-w-6 lg:max-h-8 lg:max-w-8"
+              variant="custom"
+              href={`/profile/${user.id}`}
+            >
               <Image
                 alt={user.firstname}
                 className="h-6 w-6 cursor-pointer rounded-full object-cover transition-all duration-300 hover:brightness-125 lg:h-8 lg:w-8"
@@ -46,7 +50,7 @@ export const UserActions: React.FC<UserActionsProps> = async ({ copy }) => {
                 src={user.profile_picture}
                 width={128}
               />
-            </figure>
+            </Anchor>
             <LogOut />
           </>
         )}

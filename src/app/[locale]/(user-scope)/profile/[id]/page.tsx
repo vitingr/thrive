@@ -20,7 +20,7 @@ const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
   return (
     <>
       <Navbar />
-      <main className="mx-auto flex w-full max-w-2xl justify-between gap-4 px-4 py-6 lg:max-w-7xl lg:gap-8 lg:py-12 xl:px-0">
+      <main className="mx-auto flex min-h-[62vh] w-full max-w-2xl justify-between gap-4 px-4 py-6 lg:max-w-7xl lg:gap-8 lg:py-12 xl:px-0">
         <ProfileFeed />
         <Sidebar />
       </main>

@@ -5,7 +5,7 @@ export interface GetUserFriendsData {
 }
 
 export interface GetSuggestFriendsData {
-  payload: Pick<User, 'id'>
+  userId: number
 }
 
 export interface FollowUserData {
