@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { SavedItems } from './icons/SavedItems'
 import { getTranslations } from 'next-intl/server'
 import { rawTranslation } from '@/utils/internationalization/rawTranslation'
+import { Anchor } from '@/components/toolkit/Anchor'
 
 export const ProfileMenu: React.FC = async () => {
   const user = await getUserSession()
@@ -41,10 +42,14 @@ export const ProfileMenu: React.FC = async () => {
             />
           </figure>
           <article className="flex w-full flex-col divide-y divide-slate-200 lg:pb-6">
-            <div className="flex w-full flex-col items-center gap-1 px-4 py-4">
-              <p className="text-sm text-slate-600">
+            <div className="flex w-full underline-offset-2 flex-col items-center px-4 py-4">
+              <Anchor
+                variant="custom"
+                href={`/profile/${user.id}`}
+                className="text-sm text-slate-600 transition-all duration-300 hover:underline"
+              >
                 {user.firstname} {user.lastname}
-              </p>
+              </Anchor>
               <p className="text-xs text-slate-500">{user.email}</p>
             </div>
             <div className="flex w-full flex-col py-3">

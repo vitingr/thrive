@@ -11,6 +11,7 @@ export interface SecondStepProps {
   setIsModalOpen: React.Dispatch<SetStateAction<boolean>>
   userData: User
   setImageUrl: React.Dispatch<SetStateAction<string>>
+  setCurrentStep: React.Dispatch<SetStateAction<number>>
 }
 
 export interface PostContent {

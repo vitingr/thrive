@@ -6,7 +6,10 @@ export const POST = async (req: NextRequest) => {
   try {
     const payload = await req.json()
 
-    await instanceContent.posts.likePost({ payload })
+    await instanceContent.posts.likePost({
+      postId: payload.postId,
+      userId: payload.userId
+    })
 
     return NextResponse.json(
       { mesesage: 'The post was successfully liked!' },

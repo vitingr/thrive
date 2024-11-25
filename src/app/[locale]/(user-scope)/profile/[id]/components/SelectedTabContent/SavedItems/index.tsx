@@ -10,15 +10,15 @@ export const SavedItems: React.FC = () => {
     >
       <article className="flex w-full flex-col gap-8 lg:gap-16">
         <div className="flex w-full flex-col">
-          <h2 className="font-medium lg:text-xl">Minha atividade</h2>
+          <h2 className="font-medium lg:text-xl">Itens Salvos</h2>
           <p className="text-sm text-slate-500">
-            Veja aqui as suas últimas postagens e repulicados do seu perfil
+            Veja aqui os conteúdos que você achou relevantes e salvou para acessar depois
           </p>
         </div>
         <div className="flex w-full items-center justify-center gap-2 pb-4">
           <EmptyPapertray className="h-5 w-5" />
           <p className="text-slate-500">
-            Você não publicou nada até o momento...
+            Você não salvou nada até o momento
           </p>
         </div>
       </article>

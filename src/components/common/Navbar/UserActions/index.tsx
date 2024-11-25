@@ -1,22 +1,18 @@
-import { getLocale } from 'next-intl/server'
 import Image from 'next/image'
 import { IoApps } from 'react-icons/io5'
 
 import { Anchor } from '@/components/toolkit/Anchor'
 import { getUserSession } from '@/utils/auth/getUserSession'
 
-import { CreatePost } from '../CreatePost'
 import { UserActionsProps } from './types'
 import { UserScope } from './UserScope'
 import { LogOut } from './UserScope/LogOut'
 
 export const UserActions: React.FC<UserActionsProps> = async ({ copy }) => {
   const user = await getUserSession()
-  const locale = await getLocale()
 
   return (
     <div className="flex w-auto items-center justify-end gap-8 lg:w-full">
-      <CreatePost copy={copy} locale={locale} userData={user} />
       <UserScope />
       <div className="flex items-center gap-6 border-l border-slate-300 pl-8">
         {!user ? (

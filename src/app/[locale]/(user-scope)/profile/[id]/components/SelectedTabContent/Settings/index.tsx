@@ -10,15 +10,15 @@ export const Settings: React.FC = () => {
     >
       <article className="flex w-full flex-col gap-8 lg:gap-16">
         <div className="flex w-full flex-col">
-          <h2 className="font-medium lg:text-xl">Minha atividade</h2>
+          <h2 className="font-medium lg:text-xl">Configurações</h2>
           <p className="text-sm text-slate-500">
-            Veja aqui as suas últimas postagens e repulicados do seu perfil
+            Veja aqui as opções personalizações e configuraçÕes para sua conta
           </p>
         </div>
         <div className="flex w-full items-center justify-center gap-2 pb-4">
           <EmptyPapertray className="h-5 w-5" />
           <p className="text-slate-500">
-            Você não publicou nada até o momento...
+            Não temos nada aqui ainda :D
           </p>
         </div>
       </article>

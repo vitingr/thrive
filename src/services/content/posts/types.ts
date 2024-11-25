@@ -13,19 +13,24 @@ export interface GetPostsByLanguageData {
 }
 
 export interface LikePostData {
-  payload: {
-    user: User
-    post: Post
-  }
+  userId: number
+  postId: number
 }
 
 export interface DeslikePostData {
-  payload: {
-    user: User
-    post: Post
-  }
+  userId: number
+  postId: number
 }
 
 export interface GetPostByIdData {
   post: Post
+}
+
+export interface HasUserLikedPostData {
+  userId: number
+  postId: number
+}
+
+export interface GetMyPostsData {
+  userId: number
 }

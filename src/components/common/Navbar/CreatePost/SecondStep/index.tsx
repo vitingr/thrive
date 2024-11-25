@@ -18,7 +18,8 @@ export const SecondStep: React.FC<SecondStepProps> = ({
   userData,
   locale,
   copy,
-  setImageUrl
+  setImageUrl,
+  setCurrentStep
 }) => {
   const [contentLength, setContentLength] = useState<number>(0)
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -65,6 +66,7 @@ export const SecondStep: React.FC<SecondStepProps> = ({
       })
 
       setIsModalOpen(false)
+      setCurrentStep(0)
       setImageUrl('')
       toast.success('A publicação foi criada com sucesso!')
     } catch (createPostError) {
@@ -91,7 +93,7 @@ export const SecondStep: React.FC<SecondStepProps> = ({
       <figure className="group min-h-full w-full cursor-zoom-in xl:max-w-3xl">
         <Image
           alt="New Post Image"
-          className="w-full rounded-sm object-cover transition-all duration-300 group-hover:brightness-95"
+          className="min-h-full w-full rounded-sm object-cover transition-all duration-300 group-hover:brightness-95"
           height={1920}
           src={imageUrl}
           width={1920}

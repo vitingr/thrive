@@ -5,8 +5,10 @@ import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 
 import {
   DeslikePostData,
+  GetMyPostsData,
   GetPostByIdData,
   GetPostsByLanguageData,
+  HasUserLikedPostData,
   LikePostData,
   createPostData
 } from './types'
@@ -50,10 +52,33 @@ export class Posts {
     }
   }
 
-  getPostsByLanguage = async ({
-    userId,
-    locale
-  }: GetPostsByLanguageData): Promise<ServiceRequestResponse<Post[]>> => {
+  getMyPosts = async ({ userId }: GetMyPostsData) => {
+    try {
+      if (!userId) {
+        return { data: [] }
+      }
+
+      const { data, status } = await this.instance.get(
+        `/posts/get-my-posts/${userId}`
+      )
+
+      if (status !== 200) {
+        return []
+      }
+
+      return data
+    } catch (getMyPostsErr) {
+      console.error({
+        getMyPostsErrMessage: getMyPostsErr.message
+      })
+
+      return {
+        error: getMyPostsErr.message
+      }
+    }
+  }
+
+  getPostsByLanguage = async ({ userId, locale }: GetPostsByLanguageData) => {
     try {
       if (!userId) {
         return { data: [] }
@@ -114,11 +139,15 @@ export class Posts {
   }
 
   likePost = async ({
-    payload
+    userId,
+    postId
   }: LikePostData): Promise<ServiceRequestResponse<void>> => {
     try {
+      console.log(`enviando ${postId}, ${userId}`)
+
       const { data, status } = await this.instance.post(`/posts/like-post`, {
-        payload
+        userId,
+        postId
       })
 
       if (status !== 200) {
@@ -138,11 +167,13 @@ export class Posts {
   }
 
   deslikePost = async ({
-    payload
+    userId,
+    postId
   }: DeslikePostData): Promise<ServiceRequestResponse<void>> => {
     try {
       const { data, status } = await this.instance.post(`/posts/deslike-post`, {
-        payload
+        userId,
+        postId
       })
 
       if (status !== 200) {
@@ -157,6 +188,31 @@ export class Posts {
 
       return {
         error: deslikePostError.message
+      }
+    }
+  }
+
+  hasUserLikedPost = async ({
+    userId,
+    postId
+  }: HasUserLikedPostData): Promise<ServiceRequestResponse<boolean>> => {
+    try {
+      const { data, status } = await this.instance.get(
+        `/posts/like-status/${postId}/${userId}`
+      )
+
+      if (status !== 200) {
+        throw new Error(data.message)
+      }
+
+      return
+    } catch (hasUserLikedPostErr) {
+      console.error({
+        hasUserLikedPostErrMessage: hasUserLikedPostErr.message
+      })
+
+      return {
+        error: hasUserLikedPostErr.message
       }
     }
   }
