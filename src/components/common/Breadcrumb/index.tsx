@@ -5,6 +5,7 @@ import { IoHomeOutline } from 'react-icons/io5'
 
 import { BreadcrumbProps } from './types'
 import { breadcrumbVariants } from './variance'
+import { Anchor } from '@/components/toolkit/Anchor'
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   variant,
@@ -23,9 +24,9 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
       {...props}
       title={items.map(item => item.name).join(' > ')}
     >
-      <figure className="rounded-sm p-0.5">
+      <Anchor href="/" variant="custom" className="rounded-sm p-0.5">
         <IoHomeOutline />
-      </figure>
+      </Anchor>
       {items.map((item, index) => (
         <Fragment key={`${item.name}-${index}`}>
           <GoChevronRight fill="#64748b" width={12} />

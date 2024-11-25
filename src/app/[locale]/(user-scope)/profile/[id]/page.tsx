@@ -6,6 +6,7 @@ import { NextPage } from 'next'
 import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { Sidebar } from '@/app/[locale]/(feed)/components/Feed/Sidebar'
 import { ProfileFeed } from './components/ProfileFeed'
+import { Breadcrumb } from '@/components/common/Breadcrumb'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -20,9 +21,14 @@ const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
   return (
     <>
       <Navbar />
-      <main className="mx-auto flex min-h-[62vh] w-full max-w-2xl justify-between gap-4 px-4 py-6 lg:max-w-7xl lg:gap-8 lg:py-12 xl:px-0">
-        <ProfileFeed />
-        <Sidebar />
+      <main className="mx-auto flex min-h-[62vh] max-w-2xl flex-col gap-4 px-4 py-6 lg:max-w-7xl lg:gap-8 lg:py-12 xl:px-0">
+        <span className="w-full px-4">
+          <Breadcrumb items={[{ name: 'Perfil', href: '#' }]} />
+        </span>
+        <div className="flex w-full justify-between gap-4 lg:gap-8">
+          <ProfileFeed />
+          <Sidebar />
+        </div>
       </main>
       <Footer />
     </>

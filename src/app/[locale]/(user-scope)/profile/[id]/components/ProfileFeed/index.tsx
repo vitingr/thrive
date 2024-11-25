@@ -3,6 +3,7 @@ import { HeroProfile } from '../HeroProfile'
 import { getUserSession } from '@/utils/auth/getUserSession'
 import { SelectedTabContent } from '../SelectedTabContent'
 import { instanceContent } from '@/instances/instanceContent'
+import { Breadcrumb } from '@/components/common/Breadcrumb'
 
 export const ProfileFeed: React.FC = async () => {
   const user = await getUserSession()
