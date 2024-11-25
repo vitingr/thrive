@@ -36,8 +36,8 @@ export const UserActions: React.FC<UserActionsProps> = async ({ copy }) => {
           <>
             <Anchor
               className="h-full max-h-6 w-full max-w-6 lg:max-h-8 lg:max-w-8"
-              variant="custom"
               href={`/profile/${user.id}`}
+              variant="custom"
             >
               <Image
                 alt={user.firstname}

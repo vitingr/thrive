@@ -153,8 +153,6 @@ export class Posts {
       if (status !== 200) {
         throw new Error(data.message)
       }
-
-      return
     } catch (likePostError) {
       console.error({
         likePostErrorMessage: likePostError.message
@@ -179,8 +177,6 @@ export class Posts {
       if (status !== 200) {
         throw new Error(data.message)
       }
-
-      return
     } catch (deslikePostError) {
       console.error({
         deslikePostErrorMessage: deslikePostError.message
@@ -204,8 +200,6 @@ export class Posts {
       if (status !== 200) {
         throw new Error(data.message)
       }
-
-      return
     } catch (hasUserLikedPostErr) {
       console.error({
         hasUserLikedPostErrMessage: hasUserLikedPostErr.message

@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
 import { PostActions } from './PostActions'
-import { PostCardProps } from './types'
 import { PostDropdown } from './PostDropdown'
+import { PostCardProps } from './types'
 
 export const PostCard: React.FC<PostCardProps> = ({
   user,

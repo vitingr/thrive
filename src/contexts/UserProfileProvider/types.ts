@@ -1,15 +1,16 @@
-import { Post } from "@/types/models/post";
-import { User } from "@/types/models/user";
-import { PropsWithChildren, SetStateAction } from "react";
+import { PropsWithChildren, SetStateAction } from 'react'
+
+import { Post } from '@/types/models/post'
+import { User } from '@/types/models/user'
 
 export interface UserProfileContextProps {
-  user: User
   currentSelectedTab: number
-  setCurrentSelectedTab: React.Dispatch<SetStateAction<number>>
   myPosts: Post[]
+  setCurrentSelectedTab: React.Dispatch<SetStateAction<number>>
+  user: User
 }
 
 export interface UserProfileProviderProps extends PropsWithChildren {
-  user: User
   myCreatedPosts: Post[]
+  user: User
 }

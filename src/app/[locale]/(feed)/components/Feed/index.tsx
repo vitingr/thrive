@@ -1,10 +1,10 @@
 import { Container } from '@/components/toolkit/Container'
+import { getUserSession } from '@/utils/auth/getUserSession'
 
 import { PostFeed } from './PostsFeed'
 import { Sidebar } from './Sidebar'
-import { FeedProps } from './types'
 import { ProfileMenu } from './Sidebar/ProfileMenu'
-import { getUserSession } from '@/utils/auth/getUserSession'
+import { FeedProps } from './types'
 
 export const Feed: React.FC<FeedProps> = async () => {
   const user = await getUserSession()

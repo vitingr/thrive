@@ -1,6 +1,9 @@
 'use client'
 
+import axios from 'axios'
 import { useState } from 'react'
+
+import { useLikeStatus } from '@/hooks/swr/useLikeStatus'
 
 import { Comment } from '../icons/Comment'
 import { FillFavourite } from '../icons/FillFavourite'
@@ -9,13 +12,11 @@ import { OutlineFavourite } from '../icons/OutlineFavourite'
 import { OutlineHeart } from '../icons/OutlineHeart'
 import { Share } from '../icons/Share'
 import { PostActionsProps } from './types'
-import { useLikeStatus } from '@/hooks/swr/useLikeStatus'
-import axios from 'axios'
 
 export const PostActions: React.FC<PostActionsProps> = ({ post, user }) => {
   const [favouritedPost, setFavouritedPost] = useState<boolean>(false)
 
-  const { likeStatus, isLoading, mutate } = useLikeStatus({
+  const { likeStatus, mutate } = useLikeStatus({
     payload: { post }
   })
 

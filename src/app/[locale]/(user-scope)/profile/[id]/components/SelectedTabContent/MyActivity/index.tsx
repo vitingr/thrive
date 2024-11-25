@@ -11,8 +11,8 @@ export const MyActivity: React.FC = () => {
   return (
     <Container
       as="section"
-      data-cid="my-activity-profile"
       className="animate__animated animate__fadeIn flex flex-col gap-4 rounded-[6px] bg-white px-6 py-8 lg:gap-8"
+      data-cid="my-activity-profile"
     >
       <article className="flex w-full flex-col gap-4 lg:gap-6">
         <div className="flex w-full flex-col">
@@ -25,9 +25,9 @@ export const MyActivity: React.FC = () => {
           <div className="flex w-full flex-col gap-4">
             {myPosts.map((post, index: number) => (
               <PostCard
-                user={user}
-                post={post}
                 key={`${post.id}-${index}`}
+                post={post}
+                user={user}
                 disableShadow
               />
             ))}

@@ -1,19 +1,20 @@
 'use client'
 
-import { MyActivity } from './MyActivity'
-import { Analytics } from './Analytics'
 import { useUserProfileContext } from '@/contexts/UserProfileProvider'
+
+import { Analytics } from './Analytics'
+import { MyActivity } from './MyActivity'
 import { MyFriends } from './MyFriends'
-import { Settings } from './Settings'
 import { SavedItems } from './SavedItems'
+import { Settings } from './Settings'
 
 export const SelectedTabContent: React.FC = () => {
   const TABS_CONTENT = [
-    <MyActivity />,
-    <Analytics />,
-    <MyFriends />,
-    <SavedItems />,
-    <Settings />
+    <MyActivity key="my-activity-tab" />,
+    <Analytics key="analytics-tab" />,
+    <MyFriends key="my-friends-tab" />,
+    <SavedItems key="saved-items-tab" />,
+    <Settings key="settings-tab" />
   ]
 
   const { currentSelectedTab } = useUserProfileContext()

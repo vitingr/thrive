@@ -34,7 +34,7 @@ export const googleOptions = {
           profile_picture: picture,
           background_picture: 'blank',
           google_id: googleId,
-          locale, 
+          locale,
           username: generateDefaultUsername(getUserFirstName(email))
         })
 

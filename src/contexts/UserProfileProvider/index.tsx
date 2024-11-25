@@ -1,8 +1,10 @@
 'use client'
 
 import { createContext, useContext, useState } from 'react'
-import { UserProfileContextProps, UserProfileProviderProps } from './types'
+
 import { Post } from '@/types/models/post'
+
+import { UserProfileContextProps, UserProfileProviderProps } from './types'
 
 const UserProfileContext = createContext<UserProfileContextProps>(null)
 
@@ -12,7 +14,7 @@ export const UserProfileProvider: React.FC<UserProfileProviderProps> = ({
   myCreatedPosts
 }) => {
   const [currentSelectedTab, setCurrentSelectedTab] = useState<number>(0)
-  const [myPosts, setMyPosts] = useState<Post[]>(myCreatedPosts)
+  const [myPosts, _] = useState<Post[]>(myCreatedPosts)
 
   return (
     <UserProfileContext.Provider

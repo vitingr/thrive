@@ -1,10 +1,11 @@
+import { NextPage } from 'next'
+
 import Footer from '@/components/common/Footer'
 import { Navbar } from '@/components/common/Navbar'
+import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { getMetaData } from '@/utils/getters/getMetaData'
 
 import { Feed } from './components/Feed'
-import { NextPage } from 'next'
-import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 
 export async function generateMetadata() {
   return getMetaData({

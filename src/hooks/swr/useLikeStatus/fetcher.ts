@@ -1,6 +1,7 @@
-import { swrHookFetcherParams } from '@/types/swr/swrHookFetcherParams'
-import { UseLikeStatusData } from './types'
 import { instanceContent } from '@/instances/instanceContent'
+import { swrHookFetcherParams } from '@/types/swr/swrHookFetcherParams'
+
+import { UseLikeStatusData } from './types'
 
 export const fetcher = async ([
   _,

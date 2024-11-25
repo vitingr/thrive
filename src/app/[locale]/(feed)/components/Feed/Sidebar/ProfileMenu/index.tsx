@@ -1,9 +1,11 @@
-import { getUserSession } from '@/utils/auth/getUserSession'
-import Image from 'next/image'
-import { SavedItems } from './icons/SavedItems'
 import { getTranslations } from 'next-intl/server'
-import { rawTranslation } from '@/utils/internationalization/rawTranslation'
+import Image from 'next/image'
+
 import { Anchor } from '@/components/toolkit/Anchor'
+import { getUserSession } from '@/utils/auth/getUserSession'
+import { rawTranslation } from '@/utils/internationalization/rawTranslation'
+
+import { SavedItems } from './icons/SavedItems'
 
 export const ProfileMenu: React.FC = async () => {
   const user = await getUserSession()
@@ -21,32 +23,32 @@ export const ProfileMenu: React.FC = async () => {
         <section className="rounded-md bg-white">
           <figure className="w-full">
             <Image
-              className="h-full max-h-[60px] w-full rounded-t-md object-cover"
-              alt={user.username}
               src={
                 user.background_picture === 'blank'
                   ? 'https://wallpapercave.com/wp/wp10824842.jpg'
                   : user.background_picture
               }
-              width={1920}
+              alt={user.username}
+              className="h-full max-h-[60px] w-full rounded-t-md object-cover"
               height={1080}
+              width={1920}
             />
           </figure>
           <figure className="w-full">
             <Image
-              src={user.profile_picture}
               alt={user.username}
-              width={400}
-              height={400}
               className="mx-auto -mt-6 h-12 w-12 cursor-pointer rounded-full transition-all duration-300 hover:brightness-125"
+              height={400}
+              src={user.profile_picture}
+              width={400}
             />
           </figure>
           <article className="flex w-full flex-col divide-y divide-slate-200 lg:pb-6">
-            <div className="flex w-full underline-offset-2 flex-col items-center px-4 py-4">
+            <div className="flex w-full flex-col items-center px-4 py-4 underline-offset-2">
               <Anchor
-                variant="custom"
-                href={`/profile/${user.id}`}
                 className="text-sm text-slate-600 transition-all duration-300 hover:underline"
+                href={`/profile/${user.id}`}
+                variant="custom"
               >
                 {user.firstname} {user.lastname}
               </Anchor>

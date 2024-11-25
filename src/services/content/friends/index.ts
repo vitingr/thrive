@@ -34,7 +34,7 @@ export class Friends {
       console.error({
         getUserFriendsMessage: getUserFriendsErr.message
       })
- 
+
       return {
         error: getUserFriendsErr.message
       }
@@ -45,7 +45,9 @@ export class Friends {
     userId
   }: GetSuggestFriendsData): Promise<ServiceRequestResponse<User[]>> => {
     try {
-      const { data, status } = await this.instance.get(`/users/get-suggest-friends/${userId}`)
+      const { data, status } = await this.instance.get(
+        `/users/get-suggest-friends/${userId}`
+      )
 
       console.log('pegando users amigos')
 

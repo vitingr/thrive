@@ -1,12 +1,13 @@
+import { NextPage } from 'next'
+
+import { Sidebar } from '@/app/[locale]/(feed)/components/Feed/Sidebar'
+import { Breadcrumb } from '@/components/common/Breadcrumb'
 import Footer from '@/components/common/Footer'
 import { Navbar } from '@/components/common/Navbar'
+import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { getMetaData } from '@/utils/getters/getMetaData'
 
-import { NextPage } from 'next'
-import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
-import { Sidebar } from '@/app/[locale]/(feed)/components/Feed/Sidebar'
 import { ProfileFeed } from './components/ProfileFeed'
-import { Breadcrumb } from '@/components/common/Breadcrumb'
 
 export async function generateMetadata() {
   return getMetaData({
