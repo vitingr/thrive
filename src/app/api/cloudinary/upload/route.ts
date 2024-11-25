@@ -26,7 +26,7 @@ export const POST = async (request: Request) => {
       use_filename: true,
       unique_filename: false,
       overwrite: true,
-      transformation: [{ width: 1515, height: 1515, crop: 'scale' }]
+      transformation: [{ width: 800, height: 500, crop: 'scale' }]
     }
 
     const result = await cloudinary.uploader.upload(path, options)

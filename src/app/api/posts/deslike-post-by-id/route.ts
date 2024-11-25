@@ -6,7 +6,10 @@ export const POST = async (req: NextRequest) => {
   try {
     const payload = await req.json()
 
-    await instanceContent.posts.deslikePost({ payload })
+    await instanceContent.posts.deslikePost({
+      postId: payload.postId,
+      userId: payload.userId
+    })
 
     return NextResponse.json(
       { mesesage: 'The post was successfully desliked!' },

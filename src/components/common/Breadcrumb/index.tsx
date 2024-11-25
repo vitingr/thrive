@@ -3,6 +3,8 @@ import { Fragment, createElement } from 'react'
 import { GoChevronRight } from 'react-icons/go'
 import { IoHomeOutline } from 'react-icons/io5'
 
+import { Anchor } from '@/components/toolkit/Anchor'
+
 import { BreadcrumbProps } from './types'
 import { breadcrumbVariants } from './variance'
 
@@ -23,9 +25,9 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
       {...props}
       title={items.map(item => item.name).join(' > ')}
     >
-      <figure className="rounded-sm p-0.5">
+      <Anchor className="rounded-sm p-0.5" href="/" variant="custom">
         <IoHomeOutline />
-      </figure>
+      </Anchor>
       {items.map((item, index) => (
         <Fragment key={`${item.name}-${index}`}>
           <GoChevronRight fill="#64748b" width={12} />

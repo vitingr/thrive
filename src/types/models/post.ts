@@ -11,8 +11,8 @@ export interface Post {
   location: string
   number_likes: number
   type: PostType
-  video_url: string
   user_liked?: boolean
+  video_url: string
 }
 
 export type PostType = 'video' | 'image'

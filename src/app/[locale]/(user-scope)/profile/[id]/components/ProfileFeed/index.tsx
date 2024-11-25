@@ -1,15 +1,20 @@
 import { UserProfileProvider } from '@/contexts/UserProfileProvider'
-import { HeroProfile } from '../HeroProfile'
+import { instanceContent } from '@/instances/instanceContent'
 import { getUserSession } from '@/utils/auth/getUserSession'
-import { Analytics } from '../SelectedTabContent/Analytics'
+
+import { HeroProfile } from '../HeroProfile'
 import { SelectedTabContent } from '../SelectedTabContent'
 
 export const ProfileFeed: React.FC = async () => {
   const user = await getUserSession()
 
+  const { data: myPosts } = await instanceContent.posts.getMyPosts({
+    userId: user.id
+  })
+
   return (
-    <UserProfileProvider user={user}>
-      <section className='flex flex-col w-full gap-4'>
+    <UserProfileProvider myCreatedPosts={myPosts} user={user}>
+      <section className="flex w-full flex-col gap-4">
         <HeroProfile />
         <SelectedTabContent />
       </section>

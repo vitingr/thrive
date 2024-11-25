@@ -8,9 +8,10 @@ export interface SecondStepProps {
   copy: Messages['navbar']['content']
   imageUrl: string
   locale: string
+  setCurrentStep: React.Dispatch<SetStateAction<number>>
+  setImageUrl: React.Dispatch<SetStateAction<string>>
   setIsModalOpen: React.Dispatch<SetStateAction<boolean>>
   userData: User
-  setImageUrl: React.Dispatch<SetStateAction<string>>
 }
 
 export interface PostContent {

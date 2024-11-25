@@ -1,4 +1,4 @@
-import { IconProps } from "@/types/components/icons";
+import { IconProps } from '@/types/components/icons'
 
 export const SavedItems: React.FC<IconProps> = props => {
   return (

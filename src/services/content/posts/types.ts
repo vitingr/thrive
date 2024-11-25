@@ -1,5 +1,4 @@
 import { Post } from '@/types/models/post'
-import { User } from '@/types/models/user'
 
 export interface createPostData {
   locale: string
@@ -13,19 +12,24 @@ export interface GetPostsByLanguageData {
 }
 
 export interface LikePostData {
-  payload: {
-    user: User
-    post: Post
-  }
+  postId: number
+  userId: number
 }
 
 export interface DeslikePostData {
-  payload: {
-    user: User
-    post: Post
-  }
+  postId: number
+  userId: number
 }
 
 export interface GetPostByIdData {
   post: Post
+}
+
+export interface HasUserLikedPostData {
+  postId: number
+  userId: number
+}
+
+export interface GetMyPostsData {
+  userId: number
 }

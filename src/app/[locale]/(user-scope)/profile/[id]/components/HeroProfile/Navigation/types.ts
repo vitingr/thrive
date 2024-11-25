@@ -1,4 +1,4 @@
-import { Messages } from "@/constants/internationalization/messages";
+import { Messages } from '@/constants/internationalization/messages'
 
 export interface NavigationProps {
   copy: Messages['profile']['heroProfile']
