@@ -16,7 +16,7 @@ import { PostActionsProps } from './types'
 export const PostActions: React.FC<PostActionsProps> = ({ post, user }) => {
   const [favouritedPost, setFavouritedPost] = useState<boolean>(false)
 
-  const { likeStatus, mutate } = useLikeStatus({
+  const { likeStatus , mutate } = useLikeStatus({
     payload: { post }
   })
 

@@ -1,13 +1,15 @@
 import axios, { AxiosInstance } from 'axios'
 
 import { Sso } from './sso'
+import { Google } from './google'
 import { Users } from './users'
 
 export class Auth {
   private instance: AxiosInstance
 
   public sso: Sso
-  public users: Users
+  public google: Google
+  public user: Users
 
   constructor() {
     this.instance = axios.create({
@@ -18,6 +20,7 @@ export class Auth {
     })
 
     this.sso = new Sso(this.instance)
-    this.users = new Users(this.instance)
+    this.google = new Google(this.instance)
+    this.user = new Users(this.instance)
   }
 }

@@ -10,11 +10,11 @@ export interface CreateUserData
     | 'background_picture'
     | 'username'
     | 'locale'
-    | 'password'
   > {
+  google_id: string
+  profilePicture?: string
 }
 
 export interface LoginUserData {
   email: string
-  password: string
 }

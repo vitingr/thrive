@@ -5026,6 +5026,11 @@ rangetouch@^2.0.1:
   resolved "https://registry.yarnpkg.com/rangetouch/-/rangetouch-2.0.1.tgz#c01105110fd3afca2adcb1a580692837d883cb70"
   integrity sha512-sln+pNSc8NGaHoLzwNBssFSf/rSYkqeBXzX1AtJlkJiUaVSJSbRAWJk+4omsXkN+EJalzkZhWQ3th1m0FpR5xA==
 
+rate-limiter-flexible@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/rate-limiter-flexible/-/rate-limiter-flexible-5.0.4.tgz#6ee6b1f7bd6e06b364a7ed6afab65d23f88e5a99"
+  integrity sha512-ftYHrIfSqWYDIJZ4yPTrgOduByAp+86gUS9iklv0JoXVM8eQCAjTnydCj1hAT4MmhmkSw86NaFEJ28m/LC1pKA==
+
 react-aptor@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-aptor/-/react-aptor-2.0.0.tgz#d78235dbcdf28889dc9a6c179035d6ca8bd7cfa1"

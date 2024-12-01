@@ -9,4 +9,5 @@ export interface User {
   locale: string
   profile_picture: string
   username: string
+  password?: string
 }

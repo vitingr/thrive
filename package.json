@@ -41,6 +41,7 @@
     "next-intl": "^3.25.0",
     "plyr": "^3.7.8",
     "plyr-react": "^5.3.0",
+    "rate-limiter-flexible": "^5.0.4",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
