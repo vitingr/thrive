@@ -6,6 +6,7 @@ import { translation } from '@/utils/internationalization/translation'
 
 import { AuthForm } from './components/AuthForm'
 import { LogginWithAccount } from './components/LogginWithAccount'
+import { setRequestLocale } from 'next-intl/server'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -17,6 +18,7 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
+  setRequestLocale(locale)
   const { raw } = await translation('auth')
 
   return (

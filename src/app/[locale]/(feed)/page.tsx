@@ -6,6 +6,7 @@ import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { getMetaData } from '@/utils/getters/getMetaData'
 
 import { Feed } from './components/Feed'
+import { setRequestLocale } from 'next-intl/server'
 
 export async function generateMetadata() {
   return getMetaData({
@@ -17,6 +18,7 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
+  setRequestLocale(locale)
   // # TODO
   // Adicionar novo modal futuramente convidando usuário a se cadastrar na plataforma caso não esteja
   // Ai se quiser criar conta redirecionar para /login
