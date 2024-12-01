@@ -7,7 +7,7 @@ export interface User {
   id: number
   lastname: string
   locale: string
+  password?: string
   profile_picture: string
   username: string
-  password?: string
 }

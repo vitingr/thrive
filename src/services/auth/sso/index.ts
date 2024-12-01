@@ -1,10 +1,10 @@
 import { AxiosInstance } from 'axios'
+import { compare } from 'bcryptjs'
 
 import { User } from '@/types/models/user'
 import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 
 import { CreateUserData, LoginUserData } from './types'
-import { compare } from 'bcryptjs'
 
 export class Sso {
   private instance: AxiosInstance
@@ -53,7 +53,10 @@ export class Sso {
       console.log(data.data)
       console.log(data.data.password)
 
-      const isValidPassword = await compare(payload.password, data.data.password)
+      const isValidPassword = await compare(
+        payload.password,
+        data.data.password
+      )
 
       if (!isValidPassword) {
         throw new Error('Invalid Password')

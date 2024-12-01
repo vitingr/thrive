@@ -55,7 +55,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
         password,
         redirect: true,
         callbackUrl: undefined,
-        action: "signIn"
+        action: 'signIn'
       })
 
       if (response?.error) {

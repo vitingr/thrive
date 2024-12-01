@@ -2,7 +2,6 @@ import { cookies } from 'next/headers'
 
 import { auth } from '@/instances/instanceAuth'
 import { generateDefaultUsername } from '@/utils/auth/generateDefaultUsername'
-import { getUserFirstName } from '@/utils/auth/getUserFirstName'
 import { getUserSession } from '@/utils/auth/getUserSession'
 
 export const googleOptions = {

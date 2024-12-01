@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 
 import Footer from '@/components/common/Footer'
 import { Navbar } from '@/components/common/Navbar'
@@ -6,7 +7,6 @@ import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { getMetaData } from '@/utils/getters/getMetaData'
 
 import { Feed } from './components/Feed'
-import { setRequestLocale } from 'next-intl/server'
 
 export async function generateMetadata() {
   return getMetaData({

@@ -1,11 +1,9 @@
-import { User as NextAuthUser } from 'next-auth'
+import { cookies } from 'next/headers'
 
 import { auth } from '@/instances/instanceAuth'
-import { getUserSession } from '@/utils/auth/getUserSession'
-import { cookies } from 'next/headers'
 import { generateDefaultUsername } from '@/utils/auth/generateDefaultUsername'
-import { getUserFirstName } from '@/utils/auth/getUserFirstName'
 import { generateHash } from '@/utils/auth/generateHash'
+import { getUserSession } from '@/utils/auth/getUserSession'
 
 export const credentialsOptions = {
   id: 'credentials',
@@ -88,10 +86,6 @@ export const credentialsOptions = {
         })
       }
     }
-
-    // const {
-    //   data: { user }
-    // } = await auth.users.loginUser(credentials)
 
     return {
       id: user.id,

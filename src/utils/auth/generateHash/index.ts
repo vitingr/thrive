@@ -1,4 +1,5 @@
 import { genSalt, hash } from 'bcryptjs'
+
 import { GenerateHashData } from './types'
 
 export const generateHash = async ({ password }: GenerateHashData) => {

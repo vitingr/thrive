@@ -1,20 +1,21 @@
 'use client'
 
+import { signIn } from 'next-auth/react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import { Button } from '@/components/toolkit/Button'
-
-import { AuthFormProps, isLoadingSubmitProps, SignUpInputs } from './types'
-import { signIn } from 'next-auth/react'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { useUserSession } from '@/hooks/useUserSession'
 import useRefreshRoute from '@/hooks/useRefreshRoute'
-import { useEffect, useState } from 'react'
-import { signupSchema } from './schemas'
+import { useUserSession } from '@/hooks/useUserSession'
 import { auth } from '@/instances/instanceAuth'
-import { toast } from 'react-toastify'
-import { useRouter } from 'next/navigation'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import { signupSchema } from './schemas'
+
+import { AuthFormProps, SignUpInputs, isLoadingSubmitProps } from './types'
 
 export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
   const router = useRouter()
@@ -23,8 +24,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
 
   const {
     register,
-    handleSubmit,
-    formState: { errors }
+    handleSubmit
   } = useForm({
     resolver: zodResolver(signupSchema({ locale }))
   })
@@ -37,8 +37,13 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
   const onSubmit: SubmitHandler<SignUpInputs> = async ({
     email,
     password,
-    name
+    name,
+    confirmPassword
   }) => {
+    if (password !== confirmPassword) {
+      toast.info(copy.errors.passwordDifferent)
+    }
+
     setIsLoadingSubmit(prev => ({
       ...prev,
       email: true
@@ -120,9 +125,9 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
         />
         <input
           className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
-          placeholder={copy.email.placeholder}
           maxLength={80}
           minLength={8}
+          placeholder={copy.email.placeholder}
           spellCheck={false}
           type="text"
           {...register('email')}
@@ -130,9 +135,9 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
         />
         <input
           className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
-          placeholder={copy.password.placeholder}
           maxLength={80}
           minLength={8}
+          placeholder={copy.password.placeholder}
           spellCheck={false}
           type="text"
           {...register('password')}
@@ -140,9 +145,9 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
         />
         <input
           className="w-full rounded-md bg-slate-50 px-3 py-2 text-sm text-slate-600 outline-none ring-1 ring-slate-200 transition-all duration-300 focus:ring-indigo-500"
-          placeholder={copy.confirmPassword.placeholder}
           maxLength={80}
           minLength={8}
+          placeholder={copy.confirmPassword.placeholder}
           spellCheck={false}
           type="text"
           {...register('confirmPassword')}

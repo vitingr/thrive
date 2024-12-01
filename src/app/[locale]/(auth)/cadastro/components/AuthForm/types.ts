@@ -12,8 +12,9 @@ export interface isLoadingSubmitProps {
 
 export interface SignUpInputs {
   email?: string
-  password?: string
   name?: string
+  password?: string
+  confirmPassword?: string
 }
 
 export interface SignUpSchemaData {

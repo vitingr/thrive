@@ -11,8 +11,7 @@ export interface CreateUserData
     | 'username'
     | 'locale'
     | 'password'
-  > {
-}
+  > {}
 
 export interface LoginUserData {
   email: string

@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 
 import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { getMetaData } from '@/utils/getters/getMetaData'
@@ -6,7 +7,6 @@ import { translation } from '@/utils/internationalization/translation'
 
 import { AuthForm } from './components/AuthForm'
 import { LogginWithAccount } from './components/LogginWithAccount'
-import { setRequestLocale } from 'next-intl/server'
 
 export async function generateMetadata() {
   return getMetaData({

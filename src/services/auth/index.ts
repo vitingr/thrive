@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
 
-import { Sso } from './sso'
 import { Google } from './google'
+import { Sso } from './sso'
 import { Users } from './users'
 
 export class Auth {
