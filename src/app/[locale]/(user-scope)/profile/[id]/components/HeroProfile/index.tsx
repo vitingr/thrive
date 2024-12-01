@@ -7,8 +7,11 @@ import { translation } from '@/utils/internationalization/translation'
 
 import { Navigation } from './Navigation'
 import { UserHighlights } from './UserHighlights'
+import { EditProfile } from '../EditProfile'
+import { getLocale } from 'next-intl/server'
 
 export const HeroProfile: React.FC = async () => {
+  const locale = await getLocale()
   const user = await getUserSession()
   const { raw } = await translation('profile')
 
@@ -19,10 +22,10 @@ export const HeroProfile: React.FC = async () => {
       data-cid="hero-profile"
     >
       <header className="flex w-full justify-between gap-4 ">
-        <figure className="w-auto lg:min-w-[80px]">
+        <figure className="w-auto lg:min-w-20">
           <Image
             alt={user.username}
-            className="cursor-pointer rounded-full transition-all duration-300 hover:brightness-125"
+            className="cursor-pointer object-cover lg:h-20 lg:w-20 rounded-full transition-all duration-300 hover:brightness-125"
             height={80}
             src={user.profile_picture}
             width={80}
@@ -43,9 +46,7 @@ export const HeroProfile: React.FC = async () => {
           </p>
         </article>
         <article className="flex h-auto w-auto items-start gap-4 lg:min-w-[220px]">
-          <Button className="md:text-sm" variant="secondary">
-            Editar
-          </Button>
+          <EditProfile locale={locale} copy={raw('editProfile')} />
           <Button className="md:text-sm" variant="secondaryOutline">
             Ver Perfil
           </Button>

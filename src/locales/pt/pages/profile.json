@@ -12,5 +12,30 @@
       "Salvos",
       "Configurações"
     ]
+  },
+  "editProfile": {
+    "editButton": {
+      "label": "Editar"
+    },
+    "title": "Conta",
+    "description": "Atualize as configurações da sua conta. Defina seu idioma e fuso horário preferidos.",
+    "name": {
+      "title": "Nome",
+      "placeholder": "Seu nome",
+      "description": "Este é o nome que será exibido no seu perfil e nos e-mails."
+    },
+    "dateOfBirth": {
+      "title": "Data de nascimento",
+      "placeholder": "Data de nascimento",
+      "description": "Sua data de nascimento é usada para calcular sua idade."
+    },
+    "language": {
+      "title": "Idioma",
+      "placeholder": "Selecione o idioma",
+      "description": "Este é o idioma que será usado no painel."
+    },
+    "button": {
+      "label": "Atualizar conta"
+    }
   }
 }
