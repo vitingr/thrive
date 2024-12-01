@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 
 import Footer from '@/components/common/Footer'
 import { Navbar } from '@/components/common/Navbar'
@@ -17,6 +18,7 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
+  setRequestLocale(locale)
   // # TODO
   // Adicionar novo modal futuramente convidando usuário a se cadastrar na plataforma caso não esteja
   // Ai se quiser criar conta redirecionar para /login

@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 
 import { NextPageDefaultProps } from '@/types/nextPageDefaultProps'
 import { getMetaData } from '@/utils/getters/getMetaData'
@@ -17,6 +18,7 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
+  setRequestLocale(locale)
   const { raw } = await translation('auth')
 
   return (

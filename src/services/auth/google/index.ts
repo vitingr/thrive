@@ -1,12 +1,11 @@
 import { AxiosInstance } from 'axios'
-import { compare } from 'bcryptjs'
 
 import { User } from '@/types/models/user'
 import { ServiceRequestResponse } from '@/types/services/serviceRequestResponse'
 
 import { CreateUserData, LoginUserData } from './types'
 
-export class Sso {
+export class Google {
   private instance: AxiosInstance
 
   constructor(instance: AxiosInstance) {
@@ -17,14 +16,12 @@ export class Sso {
     payload: CreateUserData
   ): Promise<ServiceRequestResponse<User>> => {
     try {
-      console.log('criando sso')
-      const { data, status } = await this.instance.post(`/sso`, payload)
+      const { data, status } = await this.instance.post(`/google`, payload)
 
       if (status !== 200) {
         throw new Error(data.message)
       }
 
-      console.log(`criado: ${data}`)
       return data
     } catch (err) {
       console.error({
@@ -47,19 +44,6 @@ export class Sso {
 
       if (status !== 200) {
         throw new Error(data.message)
-      }
-
-      console.log(data)
-      console.log(data.data)
-      console.log(data.data.password)
-
-      const isValidPassword = await compare(
-        payload.password,
-        data.data.password
-      )
-
-      if (!isValidPassword) {
-        throw new Error('Invalid Password')
       }
 
       return data

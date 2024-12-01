@@ -2,7 +2,6 @@ import { cookies } from 'next/headers'
 
 import { auth } from '@/instances/instanceAuth'
 import { generateDefaultUsername } from '@/utils/auth/generateDefaultUsername'
-import { getUserFirstName } from '@/utils/auth/getUserFirstName'
 import { getUserSession } from '@/utils/auth/getUserSession'
 
 export const googleOptions = {
@@ -15,9 +14,10 @@ export const googleOptions = {
     const user = await getUserSession()
 
     const { sub: googleId, email, picture, given_name, family_name } = profile
+
     if (!user) {
       try {
-        const { data: userData, error } = await auth.sso.loginUser({
+        const { data: userData, error } = await auth.google.loginUser({
           email
         })
 
@@ -27,7 +27,7 @@ export const googleOptions = {
           }
         }
 
-        const { data: createdUserData } = await auth.sso.createUser({
+        const { data: createdUserData } = await auth.google.createUser({
           email,
           firstname: given_name,
           lastname: family_name,
@@ -35,12 +35,12 @@ export const googleOptions = {
           background_picture: 'blank',
           google_id: googleId,
           locale,
-          username: generateDefaultUsername(getUserFirstName(email))
+          username: generateDefaultUsername(given_name)
         })
 
         if (createdUserData) {
           const { data: loginData, error: loginError } =
-            await auth.sso.loginUser({
+            await auth.google.loginUser({
               email
             })
 
@@ -57,6 +57,9 @@ export const googleOptions = {
       }
     }
 
-    return null
+    return {
+      id: user.id,
+      ...user
+    }
   }
 }

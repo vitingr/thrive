@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 
 import { Sidebar } from '@/app/[locale]/(feed)/components/Feed/Sidebar'
 import { Breadcrumb } from '@/components/common/Breadcrumb'
@@ -19,6 +20,8 @@ export async function generateMetadata() {
 }
 
 const Page: NextPage<NextPageDefaultProps> = async ({ params: { locale } }) => {
+  setRequestLocale(locale)
+
   return (
     <>
       <Navbar />

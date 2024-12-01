@@ -41,7 +41,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
     }))
 
     try {
-      const { error: accountDoesNotExist } = await auth.users.getUserByEmail({
+      const { error: accountDoesNotExist } = await auth.user.getUserByEmail({
         email
       })
 
@@ -54,7 +54,8 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
         email,
         password,
         redirect: true,
-        callbackUrl: undefined
+        callbackUrl: undefined,
+        action: 'signIn'
       })
 
       if (response?.error) {
@@ -131,7 +132,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ copy, locale }) => {
           isLoading={isLoadingSubmit.email}
           type="submit"
         >
-          {copy.button.label}
+          {copy.signIn.label}
         </Button>
       </section>
       <div className="flex w-full items-center gap-4">
